@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://bek3v04w4q70c"]
+
+[ext_resource type="Script" uid="uid://bfwkjm0hgbqtw" path="res://ui/main_menu.gd" id="1_0dkrt"]
+[ext_resource type="Script" uid="uid://dkiijm0vrawo1" path="res://ui/button.gd" id="2_wk0pr"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dkrt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -37.5
+offset_right = 116.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lady" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Save
+the 
+piggies!"
+
+[node name="Startbt" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Start
+"
+script = ExtResource("2_wk0pr")
+
+[node name="Creditsbt" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Quitbt" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 142.0
+offset_right = 408.0
+offset_bottom = 243.0
+scale = Vector2(0.593483, 0.561808)
+text = "Left/right arrowkeys for movement
+Spacebar for jumping
+Esc for pause menu
+3 hits"
+horizontal_alignment = 2

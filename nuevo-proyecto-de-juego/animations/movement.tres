@@ -1,0 +1,72 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=21 format=3 uid="uid://b6xeodt4ctrrd"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhpxe"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n7ghd"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nvl01"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ivps1"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_urp6f"]
+animation = &"jump_start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwjto"]
+animation = &"land"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_606se"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1c27"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_op7ga"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q13i1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pbfsw"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tmop"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ahtn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7lmhl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dx0e4"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qtqh7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2wuci"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_onrkg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i3pqv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hqtel"]
+
+[resource]
+states/death/node = SubResource("AnimationNodeAnimation_qhpxe")
+states/death/position = Vector2(876.4, -31)
+states/fall/node = SubResource("AnimationNodeAnimation_n7ghd")
+states/fall/position = Vector2(682.4, -149)
+states/idle/node = SubResource("AnimationNodeAnimation_nvl01")
+states/idle/position = Vector2(307, 100)
+states/jump/node = SubResource("AnimationNodeAnimation_ivps1")
+states/jump/position = Vector2(515.4, -160)
+states/jump_start/node = SubResource("AnimationNodeAnimation_urp6f")
+states/jump_start/position = Vector2(307, -120)
+states/land/node = SubResource("AnimationNodeAnimation_bwjto")
+states/land/position = Vector2(817.4, -126)
+states/run/node = SubResource("AnimationNodeAnimation_606se")
+states/run/position = Vector2(627.4, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_u1c27")
+states/walk/position = Vector2(1107.4, 36)
+transitions = ["idle", "jump_start", SubResource("AnimationNodeStateMachineTransition_op7ga"), "run", "jump_start", SubResource("AnimationNodeStateMachineTransition_q13i1"), "jump_start", "jump", SubResource("AnimationNodeStateMachineTransition_pbfsw"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_5tmop"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_7ahtn"), "land", "run", SubResource("AnimationNodeStateMachineTransition_7lmhl"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_dx0e4"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_qtqh7"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_2wuci"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_onrkg"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_i3pqv"), "run", "fall", SubResource("AnimationNodeStateMachineTransition_hqtel")]
+graph_offset = Vector2(35.4, -211)

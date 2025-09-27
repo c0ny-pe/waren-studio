@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://b301pr46qbbgv"]
+
+[ext_resource type="Script" uid="uid://kecpllcx8i74" path="res://ui/credits.gd" id="1_ed0b0"]
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_ed0b0")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -81.0
+offset_right = 168.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.663915, 0.587209)
+text = "Tileset graphics designed by
+Petricake Games
+
+Character graphics designed by 
+Penzilla Design
+
+Enemy piggie designed by 
+Caz Creates Games"
+horizontal_alignment = 1
+
+[node name="backbt" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -32.0
+offset_right = 79.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back to main menu"
