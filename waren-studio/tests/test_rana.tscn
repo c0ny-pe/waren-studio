@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8djvm24gnpc"]
+
+[ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/rana.tscn" id="1_6l6jq"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_od46k"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(593, 624)
+shape = SubResource("WorldBoundaryShape2D_od46k")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_6l6jq")]
+position = Vector2(598, 431)
+scale = Vector2(5, 5)

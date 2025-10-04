@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dytbf0ox6lsb4"]
+
+[ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/prota.tscn" id="1_8onat"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fhyfq"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(489, 651)
+shape = SubResource("WorldBoundaryShape2D_fhyfq")
+
+[node name="Player" parent="." instance=ExtResource("1_8onat")]
+position = Vector2(470, 297.00003)
+scale = Vector2(5, 5)
