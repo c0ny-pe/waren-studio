@@ -13,3 +13,4 @@ shape = SubResource("WorldBoundaryShape2D_fhyfq")
 [node name="Player" parent="." instance=ExtResource("1_8onat")]
 position = Vector2(470, 297.00003)
 scale = Vector2(5, 5)
+jump_speed = 600
