@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbftovcxrvydh"]
+
+[ext_resource type="Script" uid="uid://cgfornieyi00u" path="res://tests/test_player.gd" id="1_l23s0"]
+[ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="2_8djj4"]
+[ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="2_l23s0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0troh"]
+
+[node name="TestPlayer" type="Node2D"]
+script = ExtResource("1_l23s0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(552, 489)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0troh")
+
+[node name="Frog" parent="." instance=ExtResource("2_8djj4")]
+position = Vector2(147, 155)
+
+[node name="Player" parent="." instance=ExtResource("2_l23s0")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8djvm24gnpc"]
 
-[ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/rana.tscn" id="1_6l6jq"]
+[ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="1_6l6jq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_od46k"]
 

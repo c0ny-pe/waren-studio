@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dytbf0ox6lsb4"]
 
-[ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/prota.tscn" id="1_8onat"]
+[ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="1_8onat"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fhyfq"]
 
