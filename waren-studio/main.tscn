@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://06u12yy62lmv"]
+[gd_scene load_steps=8 format=3 uid="uid://06u12yy62lmv"]
 
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://53ly8h7jgtxb" path="res://main.gd" id="1_h2yge"]
@@ -7,6 +7,12 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1bvp3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(213, 170.5)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lquwl"]
+normal = Vector2(1, 0)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
 
@@ -14,8 +20,7 @@ script = ExtResource("1_h2yge")
 position = Vector2(131, 83)
 
 [node name="Human" parent="." instance=ExtResource("2_h2yge")]
-visible = false
-position = Vector2(96, 125)
+position = Vector2(-16, 0)
 scale = Vector2(2, 2)
 
 [node name="WorldBoundary" type="StaticBody2D" parent="."]
@@ -26,4 +31,15 @@ position = Vector2(104, 98)
 shape = SubResource("WorldBoundaryShape2D_1bvp3")
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_1bvp3")]
-visible = false
+
+[node name="Box" type="Area2D" parent="."]
+position = Vector2(780, 547)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="VerticalWorldBoundary" type="StaticBody2D" parent="."]
+position = Vector2(90, 563)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalWorldBoundary"]
+shape = SubResource("WorldBoundaryShape2D_lquwl")

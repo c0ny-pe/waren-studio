@@ -1,12 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c04pe474ax3sl"]
+[gd_scene load_steps=2 format=3 uid="uid://c04pe474ax3sl"]
 
 [ext_resource type="Script" uid="uid://cuyfcmxq7s010" path="res://ui/pause_menu.gd" id="1_50142"]
-[ext_resource type="PackedScene" uid="uid://duwybylpwli82" path="res://ui/main_menu.tscn" id="2_ejwgg"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
+visible = false
 script = ExtResource("1_50142")
-main_menu = ExtResource("2_ejwgg")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 8

@@ -18,21 +18,26 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y = -jump_speed
 	
-	var move_input = Input.get_axis("move_left", "move_right")
-	velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
-	move_and_slide()
+	if visible:
+		var move_input = Input.get_axis("move_left", "move_right")
+		velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
+		move_and_slide()
+		
+		if Input.is_action_just_pressed("attack"):
+			animation_tree["parameters/attack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	
-	# animación
-	if move_input:
-		pivot.scale.x = sign(move_input)
-	
-	if is_on_floor():
-		if move_input or abs(velocity.x) > 10:
-			playback.travel("run")
+		# animación
+		if move_input:
+			pivot.scale.x = sign(move_input)
+		
+		if is_on_floor():
+			if move_input or abs(velocity.x) > 10:
+				playback.travel("run")
+			else:
+				playback.travel("idle")
 		else:
-			playback.travel("idle")
-	else:
-		if velocity.y < 0:
-			playback.travel("jump")
-		else:
-			playback.travel("fall")
+			if velocity.y < 0:
+				playback.travel("jump")
+			else:
+				playback.travel("fall")
+			

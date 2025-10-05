@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
-	playback = animation_tree["parameters/playback"]
+	playback = animation_tree["parameters/movement/playback"]
 	pivot = $Pivot
 
 func _physics_process(delta: float) -> void:
