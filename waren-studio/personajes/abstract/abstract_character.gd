@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var playback: AnimationNodeStateMachinePlayback
 @onready var pivot: Node2D
 
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity*delta
@@ -21,5 +22,17 @@ func _physics_process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
 	move_and_slide()
 	
+	# animación
 	if move_input:
 		pivot.scale.x = sign(move_input)
+	
+	if is_on_floor():
+		if move_input or abs(velocity.x) > 10:
+			playback.travel("run")
+		else:
+			playback.travel("idle")
+	else:
+		if velocity.y < 0:
+			playback.travel("jump")
+		else:
+			playback.travel("fall")

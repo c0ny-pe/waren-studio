@@ -1,7 +1,5 @@
 extends AbstractCharacter
 
-var jumping = false
-
 func _ready() -> void:
 	max_speed = 300
 	jump_speed = 500
@@ -15,9 +13,3 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	
-	if abs(velocity.x) > 10:
-		playback.travel("frog_run")
-	else:
-		playback.travel("frog_idle")
-	

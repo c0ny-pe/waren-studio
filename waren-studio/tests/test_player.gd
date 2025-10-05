@@ -1,17 +1,17 @@
 extends Node2D
 
 @onready var frog: CharacterBody2D = $Frog
-@onready var player: CharacterBody2D = $Player
+@onready var human: CharacterBody2D = $Human
 
 func _ready() -> void:
 	frog.visible = true
-	player.visible = false
+	human.visible = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_shape"):
 		if frog.visible:
-			player.global_position = frog.global_position
+			human.global_position = frog.global_position
 		else:
-			frog.global_position = player.global_position
+			frog.global_position = human.global_position
 		frog.visible = not frog.visible
-		player.visible = not player.visible
+		human.visible = not human.visible
