@@ -18,4 +18,4 @@ shape = SubResource("WorldBoundaryShape2D_0troh")
 [node name="Frog" parent="." instance=ExtResource("2_8djj4")]
 position = Vector2(147, 155)
 
-[node name="Player" parent="." instance=ExtResource("2_l23s0")]
+[node name="Human" parent="." instance=ExtResource("2_l23s0")]
