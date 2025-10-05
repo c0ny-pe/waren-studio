@@ -607,7 +607,7 @@ animation = &"attack"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_xhgb0"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cki26"]
-graph_offset = Vector2(-59.519993, -12.479996)
+graph_offset = Vector2(22.991974, -14.852524)
 nodes/output/position = Vector2(470, 70)
 nodes/movement/node = ExtResource("7_31vq6")
 nodes/movement/position = Vector2(-40, 10)
@@ -619,6 +619,9 @@ node_connections = [&"output", 0, &"attack", &"attack", 0, &"movement", &"attack
 
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_np3un")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.9604645e-08, -4.7683716e-07)

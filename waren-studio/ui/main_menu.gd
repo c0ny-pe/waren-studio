@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 func _on_start_pressed():
 	print("start")
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://world.tscn")
 
 func _on_credits_pressed():
 	print("TODO: credits")
