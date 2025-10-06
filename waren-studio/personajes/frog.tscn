@@ -607,7 +607,7 @@ animation = &"attack"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_xhgb0"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cki26"]
-graph_offset = Vector2(22.991974, -14.852524)
+graph_offset = Vector2(-84.879425, 27.618484)
 nodes/output/position = Vector2(470, 70)
 nodes/movement/node = ExtResource("7_31vq6")
 nodes/movement/position = Vector2(-40, 10)
@@ -622,7 +622,7 @@ scale = Vector2(0.8, 0.8)
 script = ExtResource("1_np3un")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(4.5, 4.5)
 limit_left = 0
 limit_top = 0
 limit_right = 1280

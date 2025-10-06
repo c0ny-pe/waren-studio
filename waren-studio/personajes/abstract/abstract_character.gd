@@ -47,4 +47,7 @@ func _physics_process(delta: float) -> void:
 			
 	else:
 		camera.enabled = false
-		
+
+# acá el daño pal hitbox/hurtbox creo (toi siguiendo textual del profe)
+func take_damage():
+	print("We hit something")

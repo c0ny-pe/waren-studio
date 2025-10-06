@@ -3,10 +3,10 @@ extends AbstractCharacter
 
 
 func _ready() -> void:
-	max_speed = 300
-	jump_speed = 500
+	max_speed = 125
+	jump_speed = 300
 	gravity = 800
-	acceleration = 500
+	acceleration = 250
 	
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree
