@@ -618,10 +618,15 @@ nodes/attack/position = Vector2(300, 30)
 node_connections = [&"output", 0, &"attack", &"attack", 0, &"movement", &"attack", 1, &"Animation"]
 
 [node name="Frog" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_np3un")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.9604645e-08, -4.7683716e-07)

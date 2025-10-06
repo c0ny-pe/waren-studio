@@ -10,6 +10,9 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree
 @onready var playback: AnimationNodeStateMachinePlayback
 @onready var pivot: Node2D
+@onready var camera: Camera2D
+
+var swimming = false
 
 
 func _physics_process(delta: float) -> void:
@@ -19,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -jump_speed
 	
 	if visible:
+		camera.enabled = true
 		var move_input = Input.get_axis("move_left", "move_right")
 		velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
 		move_and_slide()
@@ -41,3 +45,6 @@ func _physics_process(delta: float) -> void:
 			else:
 				playback.travel("fall")
 			
+	else:
+		camera.enabled = false
+		
