@@ -5,7 +5,8 @@ extends Node2D
 @onready var fondo: Area2D = $Fondo
 @onready var agua: Area2D = $Agua
 
-
+var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
+var color_normal: Color = Color.WHITE
 
 func _ready() -> void:
 	frog.visible = true
@@ -20,24 +21,45 @@ func _physics_process(_delta: float) -> void:
 			human.global_position = frog.global_position
 			frog.get_node("CollisionShape2D").disabled = true
 			human.get_node("CollisionShape2D").disabled = false
+			# se transfiere el efecto si es que están en agua
+			if frog.swimming:
+				human.modulate = color_agua
 		elif human.visible:
 			frog.global_position = human.global_position
 			human.get_node("CollisionShape2D").disabled = true
 			frog.get_node("CollisionShape2D").disabled = false
+			# lo mismo pero desde el humano
+			if human.modulate == color_agua: 
+				frog.modulate = color_agua
 		frog.visible = not frog.visible
 		human.visible = not human.visible
 
 func _on_body_entered(body: AbstractCharacter):
 	if body is AbstractCharacter:
 		print("%s entered" % body.name)
-		# poner timeout -> pasa muy rápido
 		get_tree().reload_current_scene()
 	
 func _on_body_entered_water(body: AbstractCharacter):
-	if body is Frog:
+	# el efecto de agua es para ambos personajes
+	aplicar_efecto_agua(body, true)
+	
+	# solo la rana nada
+	if body.name == "Frog":
 		body.swimming = true
 		
 func _on_body_exited_water(body: AbstractCharacter):
-	if body is Frog:
+	# se quita el efecto de agua a ambos
+	aplicar_efecto_agua(body, false)
+	
+	# solo rana deja de nadar (el huamno nunca pudo XDD)
+	if body.name == "Frog":
 		body.swimming = false
 		body._ready()
+
+func aplicar_efecto_agua(body: AbstractCharacter, en_agua: bool):
+	if en_agua:
+		var tween = create_tween()
+		tween.tween_property(body, "modulate", color_agua, 0.3)
+	else:
+		var tween = create_tween()
+		tween.tween_property(body, "modulate", color_normal, 0.3)
