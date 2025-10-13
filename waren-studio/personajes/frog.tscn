@@ -655,3 +655,6 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/attack/active = false
 parameters/attack/internal_active = false
 parameters/attack/request = 0
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true

@@ -13,6 +13,9 @@ func _ready() -> void:
 	playback = animation_tree["parameters/movement/playback"]
 	pivot = $Pivot
 	camera = $Camera2D
+	coyote_timer = $CoyoteTimer
+	
+	coyote_timer.timeout.connect(_on_coyote_timeout)
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)

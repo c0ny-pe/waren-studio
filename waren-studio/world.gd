@@ -5,6 +5,8 @@ extends Node2D
 @onready var fondo: Area2D = $Fondo
 @onready var agua: Area2D = $Agua
 
+@onready var coyote_timer: Timer = $CoyoteTimer
+
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
 var color_normal: Color = Color.WHITE
 
@@ -14,6 +16,7 @@ func _ready() -> void:
 	fondo.body_entered.connect(_on_body_entered)
 	agua.body_entered.connect(_on_body_entered_water)
 	agua.body_exited.connect(_on_body_exited_water)
+	coyote_timer.timeout.connect(_on_coyote_timeout)
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_shape"):
@@ -37,7 +40,15 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body: AbstractCharacter):
 	if body is AbstractCharacter:
 		print("%s entered" % body.name)
+		Game.lives -= 1
+		print("current lives: %d" % Game.lives)
+	if Game.lives > 0:
 		get_tree().reload_current_scene()
+	else:
+		# por mientras cargar el main menu
+		get_tree().change_scene_to_file("res://ui/main_menu.tscn")
+		# en el futuro, debe mostrar un mensaje de derrota
+		# y permitir volver al main menu
 	
 func _on_body_entered_water(body: AbstractCharacter):
 	# el efecto de agua es para ambos personajes
@@ -63,3 +74,6 @@ func aplicar_efecto_agua(body: AbstractCharacter, en_agua: bool):
 	else:
 		var tween = create_tween()
 		tween.tween_property(body, "modulate", color_normal, 0.3)
+
+func _on_coyote_timeout():
+		pass

@@ -11,15 +11,17 @@ extends CharacterBody2D
 @onready var playback: AnimationNodeStateMachinePlayback
 @onready var pivot: Node2D
 @onready var camera: Camera2D
+@onready var coyote_timer: Timer
 
 var swimming = false
-
+var was_on_floor = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity*delta
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
+	if (is_on_floor() or not coyote_timer.is_stopped()) and Input.is_action_just_pressed("jump"):
 		velocity.y = -jump_speed
+		was_on_floor = false
 	
 	if visible:
 		camera.enabled = true
@@ -29,7 +31,14 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("attack"):
 			animation_tree["parameters/attack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
-	
+		
+		if was_on_floor and not is_on_floor():
+			coyote_timer.start()
+		if is_on_floor():
+			coyote_timer.stop()
+		
+		was_on_floor = is_on_floor()
+		
 		# animación
 		if move_input:
 			pivot.scale.x = sign(move_input)
@@ -51,3 +60,6 @@ func _physics_process(delta: float) -> void:
 # acá el daño pal hitbox/hurtbox creo (toi siguiendo textual del profe)
 func take_damage():
 	print("We hit something")
+
+func _on_coyote_timeout():
+	print("Coyote timeout")
