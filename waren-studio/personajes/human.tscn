@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d3ild7ulkssuu"]
+[gd_scene load_steps=26 format=3 uid="uid://d3ild7ulkssuu"]
 
 [ext_resource type="Texture2D" uid="uid://cnvmwlp7ofwt1" path="res://assets/legal fantacy ASSETS/Character/Idle/Idle-Sheet.png" id="1_fatqv"]
 [ext_resource type="Script" uid="uid://8ukg5mrrnohg" path="res://personajes/human.gd" id="1_jufo1"]
@@ -501,6 +501,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_3jtnd"]
 resource_name = "jump_start"
 length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -703,11 +704,15 @@ tracks/5/keys = {
 "values": [Vector2(-4, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_vx0gh"]
+resource_name = "delete_jump"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k6wy6"]
 _data = {
 &"RESET": SubResource("Animation_mg7kb"),
 &"attack": SubResource("Animation_qtm2k"),
 &"dead": SubResource("Animation_dejgu"),
+&"delete_jump": SubResource("Animation_vx0gh"),
 &"fall": SubResource("Animation_ocldo"),
 &"human_jumpIp-All": SubResource("Animation_r6jnl"),
 &"idle": SubResource("Animation_g81v6"),
