@@ -170,7 +170,7 @@ position = Vector2(-193, 320)
 [node name="PauseMenu" parent="." instance=ExtResource("2_gbfbk")]
 
 [node name="Fondo" type="Area2D" parent="."]
-position = Vector2(583, 720)
+position = Vector2(583, 734)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo"]
 position = Vector2(0, 1)

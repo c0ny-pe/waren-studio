@@ -25,7 +25,9 @@ func _on_continue_pressed():
 func _on_retry_pressed():
 	_on_continue_pressed()
 	get_tree().reload_current_scene()
+	Game.lives = 3
 	
 func _on_main_menu_pressed():
 	_on_continue_pressed()
 	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
+	Game.lives = 3
