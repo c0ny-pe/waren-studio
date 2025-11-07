@@ -22,7 +22,9 @@ func _physics_process(delta: float) -> void:
 	if (is_on_floor() or not coyote_timer.is_stopped()) and Input.is_action_just_pressed("jump"):
 		velocity.y = -jump_speed
 		was_on_floor = false
-	
+		if not coyote_timer.is_stopped():
+			coyote_timer.stop()
+
 	if visible:
 		camera.enabled = true
 		var move_input = Input.get_axis("move_left", "move_right")

@@ -21,7 +21,7 @@ size = Vector2(243, 20)
 size = Vector2(1303, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wse8f"]
-size = Vector2(1113, 354)
+size = Vector2(1159.5, 354)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pkg7o")
@@ -173,14 +173,14 @@ position = Vector2(-193, 320)
 position = Vector2(583, 734)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo"]
-position = Vector2(0, 1)
+position = Vector2(58, -4)
 shape = SubResource("RectangleShape2D_ioo17")
 
 [node name="Agua" type="Area2D" parent="."]
-visible = false
 position = Vector2(683, 539)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Agua"]
+position = Vector2(23.25, 0)
 shape = SubResource("RectangleShape2D_wse8f")
 
 [node name="CoyoteTimer" type="Timer" parent="."]

@@ -241,6 +241,9 @@ tracks/5/keys = {
 "values": [Vector2(11, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_vx0gh"]
+resource_name = "delete_jump"
+
 [sub_resource type="Animation" id="Animation_ocldo"]
 resource_name = "fall"
 length = 0.8
@@ -501,7 +504,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_3jtnd"]
 resource_name = "jump_start"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -704,9 +706,6 @@ tracks/5/keys = {
 "values": [Vector2(-4, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_vx0gh"]
-resource_name = "delete_jump"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k6wy6"]
 _data = {
 &"RESET": SubResource("Animation_mg7kb"),
@@ -728,7 +727,7 @@ animation = &"attack"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ry7vp"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dsywh"]
-graph_offset = Vector2(-52.338287, -14.4978895)
+graph_offset = Vector2(-13.440004, 60.480022)
 nodes/output/position = Vector2(750, 130)
 nodes/movement/node = ExtResource("9_vx0gh")
 nodes/movement/position = Vector2(280, 50)

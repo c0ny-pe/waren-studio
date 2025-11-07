@@ -67,7 +67,7 @@ func _on_body_entered(body: Node2D):
 		else:
 			# por mientras cargar el main menu
 			get_tree().call_deferred("change_scene_to_file", "res://ui/main_menu.tscn")
-			Game.lives = 3
+			Game.lives = 4
 			# en el futuro, debe mostrar un mensaje de derrota
 			# y permitir volver al main menu
 
