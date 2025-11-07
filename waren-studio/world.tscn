@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=15 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://world.gd" id="1_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://ckq16f1wlb5xx" path="res://assets/World/sky.png" id="1_tlwt5"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://cara46vlt5bdv" path="res://assets/World/world-tileset.tres" id="3_036b0"]
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="5_dwbse"]
+[ext_resource type="PackedScene" uid="uid://b417fchsa5nmh" path="res://ui/game_over_menu.tscn" id="9_ioo17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic0uy"]
 size = Vector2(38, 24)
@@ -169,6 +170,9 @@ position = Vector2(-193, 320)
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_gbfbk")]
 
+[node name="GameOverMenu" parent="." instance=ExtResource("9_ioo17")]
+visible = false
+
 [node name="Fondo" type="Area2D" parent="."]
 position = Vector2(583, 734)
 
@@ -177,6 +181,7 @@ position = Vector2(58, -4)
 shape = SubResource("RectangleShape2D_ioo17")
 
 [node name="Agua" type="Area2D" parent="."]
+visible = false
 position = Vector2(683, 539)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Agua"]

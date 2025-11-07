@@ -6,6 +6,7 @@ extends Node2D
 @onready var agua: Area2D = $Agua
 
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var game_over_menu: CanvasLayer = $GameOverMenu
 
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
 var color_normal: Color = Color.WHITE
@@ -66,7 +67,9 @@ func _on_body_entered(body: Node2D):
 			get_tree().call_deferred("reload_current_scene")
 		else:
 			# por mientras cargar el main menu
-			get_tree().call_deferred("change_scene_to_file", "res://ui/main_menu.tscn")
+			
+			game_over_menu.visible = true
+			#get_tree().call_deferred("change_scene_to_file", "res://ui/main_menu.tscn")
 			Game.lives = 4
 			# en el futuro, debe mostrar un mensaje de derrota
 			# y permitir volver al main menu
