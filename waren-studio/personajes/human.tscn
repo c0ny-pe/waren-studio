@@ -727,7 +727,7 @@ animation = &"attack"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ry7vp"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dsywh"]
-graph_offset = Vector2(-13.440004, 60.480022)
+graph_offset = Vector2(85.44001, 63.36002)
 nodes/output/position = Vector2(750, 130)
 nodes/movement/node = ExtResource("9_vx0gh")
 nodes/movement/position = Vector2(280, 50)
