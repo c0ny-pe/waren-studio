@@ -8,10 +8,15 @@ extends Node2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 
+var hud_scene = preload("res://ui/hud.tscn")
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
 var color_normal: Color = Color.WHITE
 
 func _ready() -> void:
+	# instantiate HUD
+	var hud = hud_scene.instantiate()
+	add_child(hud)
+
 	frog.visible = true
 	human.visible = false
 	fondo.body_entered.connect(_on_body_entered)
