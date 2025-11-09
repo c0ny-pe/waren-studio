@@ -5,6 +5,7 @@ func _ready() -> void:
 	jump_speed = 400
 	gravity = 1200
 	acceleration = 250
+	friction = 2500
 	
 	animation_player = $AnimationPlayer
 	animation_tree = $AnimationTree

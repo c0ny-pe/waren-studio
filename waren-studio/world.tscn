@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=18 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://world.gd" id="1_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://ckq16f1wlb5xx" path="res://assets/World/sky.png" id="1_tlwt5"]
@@ -24,6 +24,12 @@ size = Vector2(1303, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wse8f"]
 size = Vector2(1159.5, 354)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3n1d"]
+size = Vector2(150, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o6r5"]
+size = Vector2(96, 29)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pkg7o")
@@ -193,3 +199,16 @@ shape = SubResource("RectangleShape2D_wse8f")
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("10_wse8f")]
+
+[node name="Waterboulder 1" type="StaticBody2D" parent="."]
+position = Vector2(302, 619)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Waterboulder 1"]
+position = Vector2(65, 34)
+shape = SubResource("RectangleShape2D_k3n1d")
+
+[node name="Waterboulder 2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Waterboulder 2"]
+position = Vector2(728, 635.5)
+shape = SubResource("RectangleShape2D_2o6r5")

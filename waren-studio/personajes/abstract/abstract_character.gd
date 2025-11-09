@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var jump_speed: int
 @export var gravity: int
 @export var acceleration: int
+@export var friction: int
 
 @onready var animation_player: AnimationPlayer
 @onready var animation_tree: AnimationTree
@@ -28,7 +29,12 @@ func _physics_process(delta: float) -> void:
 	if visible:
 		camera.enabled = true
 		var move_input = Input.get_axis("move_left", "move_right")
-		velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
+		if move_input != 0:
+		# 1. Aceleración (cuando hay input)
+			velocity.x = move_toward(velocity.x, move_input * max_speed, acceleration * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+		#velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
 		move_and_slide()
 		
 		if Input.is_action_just_pressed("attack"):
