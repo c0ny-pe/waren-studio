@@ -7,16 +7,14 @@ extends Node2D
 
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
+@onready var hud: CanvasLayer = $HUD
 
-var hud_scene = preload("res://ui/hud2.tscn")
+signal died
+
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
 var color_normal: Color = Color.WHITE
 
 func _ready() -> void:
-	# instantiate HUD
-	var hud = hud_scene.instantiate()
-	add_child(hud)
-
 	frog.visible = true
 	human.visible = false
 	fondo.body_entered.connect(_on_body_entered)
@@ -68,16 +66,10 @@ func _on_body_entered(body: Node2D):
 		print("%s entered" % body.name)
 		Game.lives -= 1
 		print("current lives: %d" % Game.lives)
-		if Game.lives > 0:
-			get_tree().call_deferred("reload_current_scene")
-		else:
-			# por mientras cargar el main menu
-			
+		died.emit()
+
+		if Game.lives == 0:
 			game_over_menu.visible = true
-			#get_tree().call_deferred("change_scene_to_file", "res://ui/main_menu.tscn")
-			Game.lives = 4
-			# en el futuro, debe mostrar un mensaje de derrota
-			# y permitir volver al main menu
 
 func _on_body_entered_water(body: Node2D) -> void:
 	if not body is AbstractCharacter:
