@@ -8,7 +8,7 @@ extends Node2D
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 
-var hud_scene = preload("res://ui/hud.tscn")
+var hud_scene = preload("res://ui/hud2.tscn")
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
 var color_normal: Color = Color.WHITE
 

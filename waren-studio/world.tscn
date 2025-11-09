@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=16 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://world.gd" id="1_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://ckq16f1wlb5xx" path="res://assets/World/sky.png" id="1_tlwt5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://b417fchsa5nmh" path="res://ui/game_over_menu.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://d03fjq33eeedx" path="res://ui/hud2.tscn" id="10_wse8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic0uy"]
 size = Vector2(38, 24)
@@ -190,3 +191,5 @@ shape = SubResource("RectangleShape2D_wse8f")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("10_wse8f")]
