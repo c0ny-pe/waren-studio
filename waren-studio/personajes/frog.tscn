@@ -379,7 +379,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_y7v17"]
 resource_name = "jump"
 length = 0.1
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -607,7 +606,6 @@ animation = &"attack"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_xhgb0"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cki26"]
-graph_offset = Vector2(-84.879425, 27.618484)
 nodes/output/position = Vector2(470, 70)
 nodes/movement/node = ExtResource("7_31vq6")
 nodes/movement/position = Vector2(-40, 10)

@@ -4,7 +4,7 @@ extends AbstractCharacter
 
 func _ready() -> void:
 	max_speed = 125
-	jump_speed = 300
+	jump_speed = 200
 	gravity = 800
 	acceleration = 250
 	friction = 2500

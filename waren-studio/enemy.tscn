@@ -7,6 +7,7 @@
 size = Vector2(87, 172)
 
 [node name="enemy" type="CharacterBody2D"]
+process_mode = 3
 scale = Vector2(0.19213058, 0.26669624)
 script = ExtResource("1_4gyqm")
 
