@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=4 uid="uid://cpdf0veu5fpve"]
+
+[ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="1_6dfvn"]
+[ext_resource type="Texture2D" uid="uid://dmugujlc2oe37" path="res://assets/chiloe/Fondo-bosque-iteración.png" id="1_e8cnt"]
+[ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="2_4nm60"]
+[ext_resource type="TileSet" uid="uid://cara46vlt5bdv" path="res://assets/World/world-tileset.tres" id="4_4nm60"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FondoBosqueIteración" type="Sprite2D" parent="."]
+position = Vector2(128, 154)
+texture = ExtResource("1_e8cnt")
+
+[node name="FondoBosqueIteración" type="Sprite2D" parent="FondoBosqueIteración"]
+position = Vector2(256, 0)
+texture = ExtResource("1_e8cnt")
+
+[node name="FondoBosqueIteración2" type="Sprite2D" parent="FondoBosqueIteración"]
+position = Vector2(504, 0)
+texture = ExtResource("1_e8cnt")
+
+[node name="FondoBosqueIteración" type="Sprite2D" parent="FondoBosqueIteración/FondoBosqueIteración2"]
+position = Vector2(256, 0)
+texture = ExtResource("1_e8cnt")
+
+[node name="FondoBosqueIteración" type="Sprite2D" parent="FondoBosqueIteración/FondoBosqueIteración2/FondoBosqueIteración"]
+position = Vector2(256, 0)
+texture = ExtResource("1_e8cnt")
+
+[node name="FondoBosqueIteración" type="Sprite2D" parent="FondoBosqueIteración/FondoBosqueIteración2/FondoBosqueIteración/FondoBosqueIteración"]
+position = Vector2(256, 0)
+texture = ExtResource("1_e8cnt")
+
+[node name="Frog" parent="." instance=ExtResource("1_6dfvn")]
+visible = false
+position = Vector2(35, 143)
+
+[node name="Human" parent="." instance=ExtResource("2_4nm60")]
+position = Vector2(78, 195)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAA4AAAAoAAsAAAACAA4AAAAoAAsAAAAEAA4AAAAoAAsAAAAGAA4AAAAoAAsAAAAIAA4AAAAoAAsAAAAKAA4AAAAoAAsAAAAMAA4AAAAoAAsAAAAOAA4AAAAoAAsAAAAQAA4AAAAoAAsAAAASAA4AAAAoAAsAAAAUAA4AAAAoAAsAAAAWAA4AAAAoAAsAAAAYAA4AAAAoAAsAAAAaAA4AAAAoAAsAAAAcAA4AAAAoAAsAAAAeAA4AAAAoAAsAAAAgAA4AAAAoAAsAAAAiAA4AAAAoAAsAAAAkAA4AAAAoAAsAAAAmAA4AAAAoAAsAAAApAA4AAAArAAsAAAAqAA4AAAAkAAsAAAAsAA4AAAAkAAsAAAAuAA4AAAAoAAsAAAAxAA4AAAArAAsAAAAzAA4AAAArAAsAAAA1AA4AAAArAAsAAAA2AA4AAAAoAAsAAAA4AA4AAAAoAAsAAAA6AA4AAAAoAAsAAAA8AA4AAAAkAAsAAAA+AA4AAAAoAAsAAABAAA4AAAAoAAsAAABDAA4AAAArAAsAAABEAA4AAAAkAAsAAABGAA4AAAAkAAsAAABIAA4AAAAoAAsAAABKAA4AAAAoAAsAAABMAA4AAAAoAAsAAABOAA4AAAAoAAsAAABQAA4AAAAoAAsAAABSAA4AAAAoAAsAAABUAA4AAAAoAAsAAABWAA4AAAAoAAsAAABYAA4AAAAoAAsAAABbAA4AAAAoAAsAAABaAA4AAAAoAAsAAABdAA4AAAAoAAsAAABfAA4AAAAoAAsAAAA=")
+tile_set = ExtResource("4_4nm60")
