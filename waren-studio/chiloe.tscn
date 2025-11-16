@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=4 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=6 format=4 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="1_6dfvn"]
 [ext_resource type="Texture2D" uid="uid://dmugujlc2oe37" path="res://assets/chiloe/Fondo-bosque-iteración.png" id="1_e8cnt"]
+[ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://chiloe.gd" id="1_reb6n"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="2_4nm60"]
 [ext_resource type="TileSet" uid="uid://cara46vlt5bdv" path="res://assets/World/world-tileset.tres" id="4_4nm60"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_reb6n")
 
 [node name="FondoBosqueIteración" type="Sprite2D" parent="."]
 position = Vector2(128, 154)

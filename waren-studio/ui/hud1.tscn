@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://xhhl5n2ngt0i"]
-
-[ext_resource type="Script" uid="uid://ns33uwi68n2l" path="res://hud.gd" id="1_rbyyf"]
-
-[node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_rbyyf")
-
-[node name="LivesSprite" type="Sprite2D" parent="."]

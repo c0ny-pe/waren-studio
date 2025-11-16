@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=23 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://world.gd" id="1_pkg7o"]
 [ext_resource type="Texture2D" uid="uid://ckq16f1wlb5xx" path="res://assets/World/sky.png" id="1_tlwt5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://b417fchsa5nmh" path="res://ui/game_over_menu.tscn" id="9_ioo17"]
 [ext_resource type="PackedScene" uid="uid://d03fjq33eeedx" path="res://ui/hud2.tscn" id="10_wse8f"]
+[ext_resource type="PackedScene" uid="uid://d2vkve5b7hrrx" path="res://enemy.tscn" id="11_ic0uy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic0uy"]
 size = Vector2(38, 24)
@@ -40,6 +41,8 @@ size = Vector2(140, 48)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2u3nc"]
 radius = 23.0
 height = 126.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u3nc"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_pkg7o")
@@ -250,3 +253,12 @@ position = Vector2(680, 386)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D5"]
 polygon = PackedVector2Array(-60, -27, -57, 13, -34, 38, 35, 39, 52, 19, 57, -28)
+
+[node name="enemy" parent="." instance=ExtResource("11_ic0uy")]
+position = Vector2(74, 330)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+position = Vector2(605, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+shape = SubResource("RectangleShape2D_2u3nc")
