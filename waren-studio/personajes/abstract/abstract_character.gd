@@ -71,3 +71,19 @@ func take_damage():
 
 func _on_coyote_timeout():
 	print("Coyote timeout")
+	
+	
+func _setup_camera_limits(limit_right: float, limit_bottom: float) -> void:
+	camera.limit_right = limit_right
+	camera.limit_bottom = limit_bottom
+
+func scale_physics_values(scale_factor: float) -> void:
+	"""
+	Escala todos los valores físicos del personaje proporcionalmente.
+	Llama a esta función después de cambiar la escala visual del personaje.
+	"""
+	max_speed = int(max_speed * scale_factor)
+	jump_speed = int(jump_speed * scale_factor)
+	gravity = int(gravity * scale_factor)
+	acceleration = int(acceleration * scale_factor)
+	friction = int(friction * scale_factor)

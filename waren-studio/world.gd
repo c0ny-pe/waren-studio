@@ -1,5 +1,12 @@
 extends Node2D
 
+## Límites de cámara personalizables por nivel
+@export_group("Camera Limits")
+@export var camera_limit_left: int = 0
+@export var camera_limit_top: int = 0
+@export var camera_limit_right: int = 1280
+@export var camera_limit_bottom: int = 720
+
 @onready var frog: CharacterBody2D = $Frog
 @onready var human: CharacterBody2D = $Human
 @onready var fondo: Area2D = $Fondo
@@ -15,12 +22,32 @@ var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
 var color_normal: Color = Color.WHITE
 
 func _ready() -> void:
+	# Configurar límites de cámara
+	_setup_camera_limits()
+	
 	frog.visible = true
 	human.visible = false
 	fondo.body_entered.connect(_on_body_entered)
 	agua.body_entered.connect(_on_body_entered_water)
 	agua.body_exited.connect(_on_body_exited_water)
 	coyote_timer.timeout.connect(_on_coyote_timeout)
+
+func _setup_camera_limits() -> void:
+	# Aplicar límites a la cámara de la rana
+	if frog.has_node("Camera2D"):
+		var frog_camera = frog.get_node("Camera2D")
+		frog_camera.limit_left = camera_limit_left
+		frog_camera.limit_top = camera_limit_top
+		frog_camera.limit_right = camera_limit_right
+		frog_camera.limit_bottom = camera_limit_bottom
+	
+	# Aplicar límites a la cámara del humano
+	if human.has_node("Camera2D"):
+		var human_camera = human.get_node("Camera2D")
+		human_camera.limit_left = camera_limit_left
+		human_camera.limit_top = camera_limit_top
+		human_camera.limit_right = camera_limit_right
+		human_camera.limit_bottom = camera_limit_bottom
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_shape"):

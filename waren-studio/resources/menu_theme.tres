@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btgdo4pj6hryy"]
+
+[ext_resource type="FontFile" uid="uid://bu0urx0cifado" path="res://assets/friendlyscribbles.ttf" id="1_muft2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei257"]
+bg_color = Color(0.004469939, 0.28798714, 0.21448243, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 3.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8ri8"]
+
+[resource]
+default_font = ExtResource("1_muft2")
+Button/styles/normal = SubResource("StyleBoxFlat_ei257")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_p8ri8")

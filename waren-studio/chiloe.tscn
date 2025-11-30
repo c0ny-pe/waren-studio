@@ -1,13 +1,31 @@
-[gd_scene load_steps=6 format=4 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=14 format=4 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="1_6dfvn"]
 [ext_resource type="Texture2D" uid="uid://dmugujlc2oe37" path="res://assets/chiloe/Fondo-bosque-iteración.png" id="1_e8cnt"]
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://chiloe.gd" id="1_reb6n"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="2_4nm60"]
+[ext_resource type="Texture2D" uid="uid://cct8oulenvvhv" path="res://assets/Nivel-Chiloe-Boceto.png" id="2_anofi"]
 [ext_resource type="TileSet" uid="uid://cara46vlt5bdv" path="res://assets/World/world-tileset.tres" id="4_4nm60"]
+[ext_resource type="PackedScene" uid="uid://c04pe474ax3sl" path="res://ui/pause_menu.tscn" id="7_urxlf"]
+[ext_resource type="PackedScene" uid="uid://b417fchsa5nmh" path="res://ui/game_over_menu.tscn" id="8_o0u4e"]
+[ext_resource type="PackedScene" uid="uid://d03fjq33eeedx" path="res://ui/hud2.tscn" id="9_o88xu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anofi"]
+size = Vector2(6311, 104)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_urxlf"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o0u4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urxlf"]
+size = Vector2(9668.5, 96.5)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_reb6n")
+
+[node name="NivelChiloeBoceto" type="Sprite2D" parent="."]
+position = Vector2(4800, 450)
+texture = ExtResource("2_anofi")
 
 [node name="FondoBosqueIteración" type="Sprite2D" parent="."]
 position = Vector2(128, 154)
@@ -34,12 +52,50 @@ position = Vector2(256, 0)
 texture = ExtResource("1_e8cnt")
 
 [node name="Frog" parent="." instance=ExtResource("1_6dfvn")]
-visible = false
-position = Vector2(35, 143)
+position = Vector2(66, 408)
+scale = Vector2(2, 2)
 
 [node name="Human" parent="." instance=ExtResource("2_4nm60")]
-position = Vector2(78, 195)
+position = Vector2(-253, 424)
+scale = Vector2(3, 3)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAA4AAAAoAAsAAAACAA4AAAAoAAsAAAAEAA4AAAAoAAsAAAAGAA4AAAAoAAsAAAAIAA4AAAAoAAsAAAAKAA4AAAAoAAsAAAAMAA4AAAAoAAsAAAAOAA4AAAAoAAsAAAAQAA4AAAAoAAsAAAASAA4AAAAoAAsAAAAUAA4AAAAoAAsAAAAWAA4AAAAoAAsAAAAYAA4AAAAoAAsAAAAaAA4AAAAoAAsAAAAcAA4AAAAoAAsAAAAeAA4AAAAoAAsAAAAgAA4AAAAoAAsAAAAiAA4AAAAoAAsAAAAkAA4AAAAoAAsAAAAmAA4AAAAoAAsAAAApAA4AAAArAAsAAAAqAA4AAAAkAAsAAAAsAA4AAAAkAAsAAAAuAA4AAAAoAAsAAAAxAA4AAAArAAsAAAAzAA4AAAArAAsAAAA1AA4AAAArAAsAAAA2AA4AAAAoAAsAAAA4AA4AAAAoAAsAAAA6AA4AAAAoAAsAAAA8AA4AAAAkAAsAAAA+AA4AAAAoAAsAAABAAA4AAAAoAAsAAABDAA4AAAArAAsAAABEAA4AAAAkAAsAAABGAA4AAAAkAAsAAABIAA4AAAAoAAsAAABKAA4AAAAoAAsAAABMAA4AAAAoAAsAAABOAA4AAAAoAAsAAABQAA4AAAAoAAsAAABSAA4AAAAoAAsAAABUAA4AAAAoAAsAAABWAA4AAAAoAAsAAABYAA4AAAAoAAsAAABbAA4AAAAoAAsAAABaAA4AAAAoAAsAAABdAA4AAAAoAAsAAABfAA4AAAAoAAsAAAA=")
 tile_set = ExtResource("4_4nm60")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(18, 452)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3139.5, 125)
+shape = SubResource("RectangleShape2D_anofi")
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_urxlf")]
+
+[node name="GameOverMenu" parent="." instance=ExtResource("8_o0u4e")]
+visible = false
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="HUD" parent="." instance=ExtResource("9_o88xu")]
+
+[node name="Pared derecha" type="StaticBody2D" parent="."]
+position = Vector2(9600, 295)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared derecha"]
+shape = SubResource("WorldBoundaryShape2D_urxlf")
+
+[node name="Pared izquierda" type="StaticBody2D" parent="."]
+position = Vector2(-2, 301)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pared izquierda"]
+shape = SubResource("WorldBoundaryShape2D_o0u4e")
+
+[node name="Fondo" type="Area2D" parent="."]
+position = Vector2(5549, 1150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo"]
+position = Vector2(-758, -238)
+shape = SubResource("RectangleShape2D_urxlf")

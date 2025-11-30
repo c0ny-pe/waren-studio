@@ -747,12 +747,11 @@ limit_right = 1280
 limit_bottom = 720
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.450581e-09, -16.999998)
+position = Vector2(7.450581e-09, 0)
 rotation = -0.0039794073
 shape = SubResource("CapsuleShape2D_2fvlj")
 
 [node name="Pivot" type="Node2D" parent="."]
-position = Vector2(0, -17)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("1_fatqv")

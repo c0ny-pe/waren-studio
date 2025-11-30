@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var frog: CharacterBody2D = $Frog
-@onready var human: CharacterBody2D = $Human
-#@onready var fondo: Area2D = $Fondo
+@onready var frog: AbstractCharacter = $Frog
+@onready var human: AbstractCharacter = $Human
+@onready var fondo: Area2D = $Fondo
 #@onready var agua: Area2D = $Agua
 
 #@onready var coyote_timer: Timer = $CoyoteTimer
@@ -17,16 +17,41 @@ var color_normal: Color = Color.WHITE
 func _ready() -> void:
 	frog.visible = true
 	human.visible = false
-	#fondo.body_entered.connect(_on_body_entered)
+	frog._setup_camera_limits(9600, 900)
+	human._setup_camera_limits(9600, 900)
+	
+	# Ajustar zoom de la cámara según escala
+	_adjust_camera_zoom(human)
+	_adjust_camera_zoom(frog)
+	
+	# Ajustar valores físicos según escala
+	if human.scale.x != 1.0:
+		human.scale_physics_values(human.scale.x)
+	if frog.scale.x != 1.0:
+		frog.scale_physics_values(frog.scale.x)
+	
+	fondo.body_entered.connect(_on_body_entered)
 	#agua.body_entered.connect(_on_body_entered_water)
 	#agua.body_exited.connect(_on_body_exited_water)
 	#coyote_timer.timeout.connect(_on_coyote_timeout)
 
+func _adjust_camera_zoom(character: AbstractCharacter) -> void:
+	if character.has_node("Camera2D"):
+		var camera = character.get_node("Camera2D") as Camera2D
+		var base_zoom = 4.5
+		# Dividir el zoom base por la escala del personaje
+		var adjusted_zoom = base_zoom / character.scale.x
+		camera.zoom = Vector2(adjusted_zoom, adjusted_zoom)
+
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_shape"):
 		if frog.visible:
-			# transferir posición y velocidad
-			human.global_position = frog.global_position
+			# Calcular el offset de altura (distancia del centro al suelo)
+			var frog_bottom = _get_character_bottom_offset(frog)
+			var human_bottom = _get_character_bottom_offset(human)
+			
+			# Transferir posición ajustando por diferencia de altura
+			human.global_position = frog.global_position + Vector2(0, frog_bottom - human_bottom)
 			human.velocity = frog.velocity
 
 			# transferir estado de agua
@@ -41,8 +66,12 @@ func _physics_process(_delta: float) -> void:
 			frog.get_node("CollisionShape2D").disabled = true
 			human.get_node("CollisionShape2D").disabled = false
 		elif human.visible:
-			# transferir posición y velocidad
-			frog.global_position = human.global_position
+			# Calcular el offset de altura (distancia del centro al suelo)
+			var frog_bottom = _get_character_bottom_offset(frog)
+			var human_bottom = _get_character_bottom_offset(human)
+			
+			# Transferir posición ajustando por diferencia de altura
+			frog.global_position = human.global_position + Vector2(0, human_bottom - frog_bottom)
 			frog.velocity = human.velocity
 
 			# transferir estado de agua
@@ -60,6 +89,28 @@ func _physics_process(_delta: float) -> void:
 		# cambiar visibilidad
 		frog.visible = not frog.visible
 		human.visible = not human.visible
+
+func _get_character_bottom_offset(character: AbstractCharacter) -> float:
+	"""
+	Calcula la distancia del centro del personaje al punto más bajo de su colisión.
+	Esto permite alinear los pies al cambiar de forma.
+	"""
+	if character.has_node("CollisionShape2D"):
+		var collision = character.get_node("CollisionShape2D") as CollisionShape2D
+		var shape = collision.shape
+		
+		if shape is CapsuleShape2D:
+			# Para una cápsula, la mitad de la altura más la posición Y del collision shape
+			var capsule = shape as CapsuleShape2D
+			var height = capsule.height * character.scale.y
+			return collision.position.y + (height / 2.0)
+		elif shape is RectangleShape2D:
+			# Para un rectángulo
+			var rect = shape as RectangleShape2D
+			var height = rect.size.y * character.scale.y
+			return collision.position.y + (height / 2.0)
+	
+	return 0.0
 
 func _on_body_entered(body: Node2D):
 	if body is AbstractCharacter:
