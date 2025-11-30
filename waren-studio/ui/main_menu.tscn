@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://duwybylpwli82"]
+[gd_scene load_steps=6 format=3 uid="uid://duwybylpwli82"]
 
 [ext_resource type="Script" uid="uid://cy8bu4ktsvchh" path="res://ui/main_menu.gd" id="1_t7e0r"]
+[ext_resource type="Texture2D" uid="uid://cg5h1tjnqg5h" path="res://assets/main_menu/forest/forest_sky.png" id="2_rmr83"]
+[ext_resource type="Texture2D" uid="uid://dncdy5dftj2vq" path="res://assets/main_menu/forest/forest_mountain.png" id="3_8uxxo"]
+[ext_resource type="Texture2D" uid="uid://ckpub0306mcd7" path="res://assets/main_menu/forest/forest_back.png" id="4_ei257"]
+[ext_resource type="Texture2D" uid="uid://n2j3kah2yp8g" path="res://assets/main_menu/forest/forest_long.png" id="5_8uxxo"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +14,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t7e0r")
+
+[node name="Fondo" type="Node2D" parent="."]
+
+[node name="Sky" type="Sprite2D" parent="Fondo"]
+position = Vector2(634, 403)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_rmr83")
+
+[node name="Mountains" type="Sprite2D" parent="Fondo"]
+position = Vector2(638.00006, 410.00003)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_8uxxo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Fondo"]
+position = Vector2(711, 429)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_ei257")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fondo"]
+position = Vector2(585, 311)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_8uxxo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Fondo"]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
