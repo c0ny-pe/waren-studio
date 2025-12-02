@@ -12,11 +12,7 @@ func _ready() -> void:
 	quit_button.pressed.connect(func(): get_tree().quit()) 
 	
 func _on_start_pressed():
-	print("start")
-	get_tree().change_scene_to_file("res://world.tscn")
+	LevelManager.go_to_next_level()
 
 func _on_credits_pressed():
 	print("TODO: credits")
-
-#func _on_quit_pressed():
-	#get_tree().quit()

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var coins_label: Label = $CoinsLabel
 
 var current_animation: String = ""
 var _playing_damage: bool = false
@@ -14,9 +15,14 @@ func _ready() -> void:
 		animation_player.connect("animation_finished", _on_animation_finished)
 
 	update_lives()
+	update_coins()
 
 func _process(_delta: float) -> void:
 	update_lives()
+	update_coins()
+
+func update_coins() -> void:
+	coins_label.text = "%d" % Game.coins
 
 func update_lives() -> void:
 	var target_animation: String = ""

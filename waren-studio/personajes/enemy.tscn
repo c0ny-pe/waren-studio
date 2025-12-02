@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2vkve5b7hrrx"]
 
-[ext_resource type="Script" uid="uid://b71853lg61mof" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://b71853lg61mof" path="res://personajes/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://bxeu06nyq5tcw" path="res://assets/bear.png" id="2_4gyqm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qi2p4"]

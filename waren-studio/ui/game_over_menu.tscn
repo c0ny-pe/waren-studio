@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b417fchsa5nmh"]
+[gd_scene load_steps=4 format=3 uid="uid://b417fchsa5nmh"]
 
 [ext_resource type="Script" uid="uid://bppamhm6kgc0d" path="res://ui/game_over_menu.gd" id="1_m16wd"]
 [ext_resource type="Theme" uid="uid://btgdo4pj6hryy" path="res://resources/menu_theme.tres" id="2_x1dv2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1dv2"]
+bg_color = Color(0, 0.03529412, 0.011764706, 0.47058824)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="GameOverMenu" type="CanvasLayer"]
 script = ExtResource("1_m16wd")
@@ -20,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_x1dv2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_x1dv2")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2

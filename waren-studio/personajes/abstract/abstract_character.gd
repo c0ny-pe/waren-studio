@@ -73,7 +73,7 @@ func _on_coyote_timeout():
 	print("Coyote timeout")
 	
 	
-func _setup_camera_limits(limit_right: float, limit_bottom: float) -> void:
+func _setup_camera_limits(limit_right: int, limit_bottom: int) -> void:
 	camera.limit_right = limit_right
 	camera.limit_bottom = limit_bottom
 

@@ -1,6 +1,41 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btgdo4pj6hryy"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://btgdo4pj6hryy"]
 
 [ext_resource type="FontFile" uid="uid://bu0urx0cifado" path="res://assets/friendlyscribbles.ttf" id="1_muft2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 3.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muft2"]
+bg_color = Color(0.0019905374, 0.20038861, 0.14757004, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 3.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnlfk"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 3.0
+expand_margin_right = 5.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei257"]
 bg_color = Color(0.004469939, 0.28798714, 0.21448243, 1)
@@ -12,9 +47,29 @@ expand_margin_left = 5.0
 expand_margin_top = 3.0
 expand_margin_right = 5.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 3.0
+expand_margin_right = 5.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8ri8"]
 
+[sub_resource type="FontVariation" id="FontVariation_muft2"]
+base_font = ExtResource("1_muft2")
+
 [resource]
-default_font = ExtResource("1_muft2")
+default_font = SubResource("FontVariation_muft2")
+Button/styles/focus = SubResource("StyleBoxFlat_focus")
+Button/styles/hover = SubResource("StyleBoxFlat_muft2")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_fnlfk")
 Button/styles/normal = SubResource("StyleBoxFlat_ei257")
+Button/styles/pressed = SubResource("StyleBoxFlat_pressed")
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 0
+Label/fonts/font = ExtResource("1_muft2")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_p8ri8")

@@ -1,14 +1,20 @@
-[gd_scene load_steps=20 format=3 uid="uid://d03fjq33eeedx"]
+[gd_scene load_steps=22 format=3 uid="uid://d03fjq33eeedx"]
 
-[ext_resource type="Script" uid="uid://6yugnfweoqi" path="res://ui/hud2.gd" id="1_igq33"]
-[ext_resource type="Texture2D" uid="uid://cb06twrp1056r" path="res://assets/Heart/Heart-Idle-4.png" id="2_aaqgq"]
-[ext_resource type="Texture2D" uid="uid://du1ujeveg28fr" path="res://assets/Heart/Heart-Idle-2.png" id="3_gkoce"]
-[ext_resource type="Texture2D" uid="uid://nhcpbq7bfp1b" path="res://assets/Heart/Heart-Idle-3.png" id="4_m1mgk"]
-[ext_resource type="Texture2D" uid="uid://cq8qlmx0pm742" path="res://assets/Heart/Heart-Idle-1.png" id="5_7g8hd"]
-[ext_resource type="Texture2D" uid="uid://dkrj0pf21h5uk" path="res://assets/Heart/Heart-Damage-4.png" id="6_1j7s5"]
-[ext_resource type="Texture2D" uid="uid://j34oopsgpdfb" path="res://assets/Heart/Heart-Damage-3.png" id="7_mja76"]
-[ext_resource type="Texture2D" uid="uid://bq5l03kho4mob" path="res://assets/Heart/Heart-Damage-2.png" id="8_xq3ln"]
-[ext_resource type="Texture2D" uid="uid://by0wddbccxj5h" path="res://assets/Heart/Heart-Damage-1.png" id="9_m1cvh"]
+[ext_resource type="Script" uid="uid://6yugnfweoqi" path="res://ui/hud.gd" id="1_spcu4"]
+[ext_resource type="Texture2D" uid="uid://cb06twrp1056r" path="res://assets/Heart/Heart-Idle-4.png" id="2_ff8ar"]
+[ext_resource type="Texture2D" uid="uid://by0wddbccxj5h" path="res://assets/Heart/Heart-Damage-1.png" id="3_m0eg6"]
+[ext_resource type="Texture2D" uid="uid://bq5l03kho4mob" path="res://assets/Heart/Heart-Damage-2.png" id="4_b00kl"]
+[ext_resource type="Texture2D" uid="uid://j34oopsgpdfb" path="res://assets/Heart/Heart-Damage-3.png" id="5_so1yu"]
+[ext_resource type="Texture2D" uid="uid://dkrj0pf21h5uk" path="res://assets/Heart/Heart-Damage-4.png" id="6_65xic"]
+[ext_resource type="Texture2D" uid="uid://cq8qlmx0pm742" path="res://assets/Heart/Heart-Idle-1.png" id="7_mp5xd"]
+[ext_resource type="Texture2D" uid="uid://du1ujeveg28fr" path="res://assets/Heart/Heart-Idle-2.png" id="8_u6vop"]
+[ext_resource type="Texture2D" uid="uid://nhcpbq7bfp1b" path="res://assets/Heart/Heart-Idle-3.png" id="9_xtm2r"]
+[ext_resource type="Texture2D" uid="uid://cgs60hs0ebco2" path="res://assets/MONEDA_DE_CIEN.png" id="10_ff8ar"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0eg6"]
+font_size = 14
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_ccg5i"]
 resource_name = "Heart-Damage-1"
@@ -23,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_m1cvh")]
+"values": [ExtResource("3_m0eg6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,7 +81,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_xq3ln")]
+"values": [ExtResource("4_b00kl")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -127,7 +133,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_mja76")]
+"values": [ExtResource("5_so1yu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -179,7 +185,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_1j7s5")]
+"values": [ExtResource("6_65xic")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -232,7 +238,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_7g8hd")]
+"values": [ExtResource("7_mp5xd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -285,7 +291,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_gkoce")]
+"values": [ExtResource("8_u6vop")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -338,7 +344,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_m1mgk")]
+"values": [ExtResource("9_xtm2r")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -391,7 +397,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_aaqgq")]
+"values": [ExtResource("2_ff8ar")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -442,7 +448,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_aaqgq")]
+"values": [ExtResource("2_ff8ar")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -497,14 +503,29 @@ _data = {
 [node name="HUD" type="CanvasLayer"]
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
-script = ExtResource("1_igq33")
+script = ExtResource("1_spcu4")
 
 [node name="LivesSprite" type="Sprite2D" parent="."]
 position = Vector2(65, 17)
-texture = ExtResource("2_aaqgq")
+texture = ExtResource("2_ff8ar")
 vframes = 4
+
+[node name="CoinsLabel" type="Label" parent="."]
+offset_left = 250.0
+offset_top = 9.5
+offset_right = 307.0
+offset_bottom = 24.5
+size_flags_horizontal = 4
+text = "0"
+label_settings = SubResource("LabelSettings_m0eg6")
+horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_628iu")
 }
+
+[node name="CoinSprite" type="Sprite2D" parent="."]
+position = Vector2(287.25, 16.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_ff8ar")

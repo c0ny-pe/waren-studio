@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://duwybylpwli82"]
+[gd_scene load_steps=8 format=3 uid="uid://duwybylpwli82"]
 
 [ext_resource type="Theme" uid="uid://btgdo4pj6hryy" path="res://resources/menu_theme.tres" id="1_p8ri8"]
 [ext_resource type="Script" uid="uid://cy8bu4ktsvchh" path="res://ui/main_menu.gd" id="1_t7e0r"]
@@ -6,16 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dncdy5dftj2vq" path="res://assets/main_menu/forest/forest_mountain.png" id="3_8uxxo"]
 [ext_resource type="Texture2D" uid="uid://ckpub0306mcd7" path="res://assets/main_menu/forest/forest_back.png" id="4_ei257"]
 [ext_resource type="Texture2D" uid="uid://n2j3kah2yp8g" path="res://assets/main_menu/forest/forest_long.png" id="5_8uxxo"]
-[ext_resource type="Texture2D" uid="uid://baovv4cc2vnp1" path="res://assets/tileset.png" id="6_tileset"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
-texture = ExtResource("6_tileset")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-region_rect = Rect2(0.025074005, 0.005657196, 24.009125, 23.935925)
-modulate_color = Color(0.32156864, 0.5882353, 0.9882353, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ei257"]
+bg_color = Color(0, 0.2412414, 0.14268932, 0.69803923)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -64,14 +61,14 @@ offset_right = 48.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ei257")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -79,24 +76,24 @@ theme_override_constants/separation = 8
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 35
 text = "RanitaGame"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 25
 text = "Start"
 
 [node name="CreditsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 25
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 25
 text = "Quit"
