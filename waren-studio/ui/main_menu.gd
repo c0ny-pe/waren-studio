@@ -15,4 +15,5 @@ func _on_start_pressed():
 	LevelManager.go_to_next_level()
 
 func _on_credits_pressed():
-	print("TODO: credits")
+	get_tree().change_scene_to_file("res://scenes/credits.tscn")
+	

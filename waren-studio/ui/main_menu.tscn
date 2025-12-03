@@ -77,7 +77,7 @@ theme_override_constants/separation = 8
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
-text = "RanitaGame"
+text = "Froggy Town"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
