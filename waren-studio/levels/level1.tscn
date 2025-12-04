@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=17 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://levels/world.gd" id="1_yydhl"]
 [ext_resource type="Texture2D" uid="uid://b56bqv84uu7ja" path="res://assets/World/sea.png" id="2_bekh1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d03fjq33eeedx" path="res://ui/hud.tscn" id="10_w7ck5"]
 [ext_resource type="PackedScene" uid="uid://buqkpbdb7y8mf" path="res://scenes/coin.tscn" id="11_coin"]
 [ext_resource type="PackedScene" uid="uid://dnvxrd1wwjjdu" path="res://scenes/goal.tscn" id="12_bekh1"]
+[ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="13_8bcou"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gbfbk"]
 
@@ -283,3 +284,13 @@ input_pickable = false
 
 [node name="Coin5" parent="Node2D" instance=ExtResource("11_coin")]
 position = Vector2(-170, -316)
+
+[node name="jump_human" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_8bcou")
+volume_db = -8.667
+pitch_scale = 0.81
+
+[node name="jump_frog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_8bcou")
+volume_db = -7.5
+pitch_scale = 2.0

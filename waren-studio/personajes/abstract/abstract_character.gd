@@ -14,6 +14,8 @@ extends CharacterBody2D
 @onready var camera: Camera2D
 @onready var coyote_timer: Timer
 
+
+
 var swimming = false
 var was_on_floor = false
 
@@ -26,6 +28,7 @@ func _physics_process(delta: float) -> void:
 		if not coyote_timer.is_stopped():
 			coyote_timer.stop()
 
+	
 	if visible:
 		camera.enabled = true
 		var move_input = Input.get_axis("move_left", "move_right")
@@ -36,6 +39,9 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0.0, friction * delta)
 		#velocity.x = move_toward(velocity.x, move_input* max_speed, acceleration*delta)
 		move_and_slide()
+		
+		
+			
 		
 		if Input.is_action_just_pressed("attack"):
 			animation_tree["parameters/attack/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE

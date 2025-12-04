@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d3ild7ulkssuu"]
+[gd_scene load_steps=27 format=3 uid="uid://d3ild7ulkssuu"]
 
 [ext_resource type="Texture2D" uid="uid://cnvmwlp7ofwt1" path="res://assets/legal fantacy ASSETS/Character/Idle/Idle-Sheet.png" id="1_fatqv"]
 [ext_resource type="Script" uid="uid://8ukg5mrrnohg" path="res://personajes/human.gd" id="1_jufo1"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpapmbp40ws03" path="res://assets/legal fantacy ASSETS/Character/Jump-End/Jump-End-Sheet.png" id="7_ocldo"]
 [ext_resource type="Texture2D" uid="uid://c15musmdysb6p" path="res://assets/legal fantacy ASSETS/Character/Jump-Start/Jump-Start-Sheet.png" id="8_2fvlj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cu6sbqcxwk7xu" path="res://resources/human_movement.tres" id="9_vx0gh"]
+[ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="10_ry7vp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2fvlj"]
 radius = 6.9999447
@@ -773,3 +774,8 @@ parameters/attack/request = 0
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="jump_human" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ry7vp")
+volume_db = -8.667
+pitch_scale = 0.81

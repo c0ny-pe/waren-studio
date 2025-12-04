@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://06u12yy62lmv"]
+[gd_scene load_steps=9 format=3 uid="uid://06u12yy62lmv"]
 
 [ext_resource type="Script" uid="uid://53ly8h7jgtxb" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c04pe474ax3sl" path="res://ui/pause_menu.tscn" id="4_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="5_tbgi4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1bvp3"]
 
@@ -44,3 +45,13 @@ position = Vector2(90, 563)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalWorldBoundary"]
 shape = SubResource("WorldBoundaryShape2D_lquwl")
+
+[node name="jump_human" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tbgi4")
+volume_db = -8.667
+pitch_scale = 0.78
+
+[node name="jump_frog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tbgi4")
+volume_db = -7.5
+pitch_scale = 2.0

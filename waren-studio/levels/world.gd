@@ -16,6 +16,9 @@ extends Node2D
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var hud: CanvasLayer = $HUD
 
+@onready var salto_frog: AudioStreamPlayer = $jump_frog
+@onready var salto_human: AudioStreamPlayer = $jump_human
+
 signal died
 
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
@@ -50,6 +53,14 @@ func _setup_camera_limits() -> void:
 		human_camera.limit_bottom = camera_limit_bottom
 
 func _physics_process(_delta: float) -> void:
+	
+	if Input.is_action_just_pressed("jump"):
+		if frog.visible:
+			salto_frog.play()
+		else:
+			salto_human.play()
+			
+	
 	if Input.is_action_just_pressed("change_shape"):
 		if frog.visible:
 			# transferir posición y velocidad
@@ -87,6 +98,8 @@ func _physics_process(_delta: float) -> void:
 		# cambiar visibilidad
 		frog.visible = not frog.visible
 		human.visible = not human.visible
+
+
 
 func _on_body_entered(body: Node2D):
 	if body is AbstractCharacter:

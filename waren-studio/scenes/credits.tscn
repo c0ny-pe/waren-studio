@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl0yxwxl8jxjq"]
+[gd_scene load_steps=7 format=3 uid="uid://cl0yxwxl8jxjq"]
 
+[ext_resource type="Script" uid="uid://xljjsy338inh" path="res://scenes/credits.gd" id="1_2ckv8"]
 [ext_resource type="Texture2D" uid="uid://ckq16f1wlb5xx" path="res://assets/World/sky.png" id="1_nm7lk"]
+[ext_resource type="AudioStream" uid="uid://cbwgsgkuxnw4j" path="res://sounds/YTDown.com_YouTube_Stardew-Valley-OST-Flower-Dance_Media_dcpQQsxoy5w_008_128k.mp3" id="3_0ctdu"]
 
 [sub_resource type="Animation" id="Animation_g4wvt"]
 length = 0.001
@@ -44,6 +46,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_2ckv8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -137,3 +140,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_pjc1l")
 }
 autoplay = "scroll"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0ctdu")
+volume_db = -7.222
+pitch_scale = 1.06

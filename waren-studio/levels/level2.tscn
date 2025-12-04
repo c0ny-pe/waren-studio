@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=14 format=3 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://levels/chiloe.gd" id="1_55gdq"]
 [ext_resource type="Texture2D" uid="uid://2luyxyy8gycp" path="res://assets/chiloe/Nivel-Chiloe-Boceto-v2.png" id="2_55gdq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="5_bcewn"]
 [ext_resource type="PackedScene" uid="uid://c04pe474ax3sl" path="res://ui/pause_menu.tscn" id="7_qegch"]
 [ext_resource type="PackedScene" uid="uid://b417fchsa5nmh" path="res://ui/game_over_menu.tscn" id="8_jai45"]
+[ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="9_55gdq"]
 [ext_resource type="PackedScene" uid="uid://d03fjq33eeedx" path="res://ui/hud.tscn" id="9_jj0ry"]
 [ext_resource type="PackedScene" uid="uid://dnvxrd1wwjjdu" path="res://scenes/goal.tscn" id="10_crte6"]
 
@@ -75,3 +76,13 @@ shape = SubResource("RectangleShape2D_urxlf")
 [node name="Goal" parent="." instance=ExtResource("10_crte6")]
 position = Vector2(2288, 449)
 scale = Vector2(5, 5)
+
+[node name="jump_human" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_55gdq")
+volume_db = -8.667
+pitch_scale = 0.81
+
+[node name="jump_frog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_55gdq")
+volume_db = -7.5
+pitch_scale = 2.0

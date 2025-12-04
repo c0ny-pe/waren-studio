@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cf6hd15clueyc"]
+[gd_scene load_steps=25 format=3 uid="uid://cf6hd15clueyc"]
 
 [ext_resource type="Script" uid="uid://ce62twep25pjg" path="res://personajes/frog.gd" id="1_np3un"]
 [ext_resource type="Texture2D" uid="uid://bjje7lmvbxp1v" path="res://assets/toxic-frog/GreenBrown/ToxicFrogGreenBrown_Idle.png" id="1_uyg6r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1nsarmaiqqci" path="res://assets/toxic-frog/GreenBrown/ToxicFrogGreenBrown_Explosion.png" id="4_6w3hc"]
 [ext_resource type="Texture2D" uid="uid://cyu4ikyl04aa5" path="res://assets/toxic-frog/GreenBrown/ToxicFrogGreenBrown_Attack.png" id="5_xhgb0"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://ivx41fxnjntk" path="res://resources/frog_movement.tres" id="7_31vq6"]
+[ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="8_6w3hc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cki26"]
 radius = 7.999612
@@ -656,3 +657,8 @@ parameters/attack/request = 0
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="jump_frog" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6w3hc")
+volume_db = -7.5
+pitch_scale = 2.0

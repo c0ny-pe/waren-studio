@@ -22,6 +22,8 @@ func _physics_process(_delta: float) -> void:
 			frog.get_node("CollisionShape2D").disabled = false
 		frog.visible = not frog.visible
 		human.visible = not human.visible
+		
+
 
 func _on_body_entered(body: Node2D):
 	if body is AbstractCharacter:

@@ -1,6 +1,7 @@
 class_name Frog
 extends AbstractCharacter
 
+@onready var salto: AudioStreamPlayer = $jump_frog
 
 func _ready() -> void:
 	max_speed = 125
@@ -20,6 +21,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	
+	
 	
 	if swimming:
 		jump_speed = 300

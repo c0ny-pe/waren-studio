@@ -1,5 +1,7 @@
 extends AbstractCharacter
 
+
+
 func _ready() -> void:
 	max_speed = 150
 	jump_speed = 400
@@ -18,3 +20,5 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	
+	

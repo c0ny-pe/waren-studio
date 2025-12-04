@@ -9,6 +9,10 @@ extends Node2D
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var hud: CanvasLayer = $HUD
 
+@onready var salto_frog: AudioStreamPlayer = $jump_frog
+@onready var salto_human: AudioStreamPlayer = $jump_human
+@onready var walk_leaves: AudioStreamPlayer = $walk_leaves
+
 signal died
 
 var color_agua: Color = Color(0.6, 0.8, 1.0, 0.8)
@@ -44,6 +48,14 @@ func _adjust_camera_zoom(character: AbstractCharacter) -> void:
 		camera.zoom = Vector2(adjusted_zoom, adjusted_zoom)
 
 func _physics_process(_delta: float) -> void:
+	
+	
+	if Input.is_action_just_pressed("jump"):
+		if frog.visible:
+			salto_frog.play()
+		else:
+			salto_human.play()
+	
 	if Input.is_action_just_pressed("change_shape"):
 		if frog.visible:
 			# Calcular el offset de altura (distancia del centro al suelo)
