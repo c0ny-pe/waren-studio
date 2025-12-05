@@ -41,8 +41,10 @@ func _on_body_entered(body: Node2D) -> void:
 		Game.collected_coins[coin_id] = true
 		Game.coins += 1
 		coin_sound.play()
+		sprite.visible = false
 		# Desactivar colisión para evitar múltiples detecciones
 		set_deferred("monitoring", false)
+		await coin_sound.finished
 		# Eliminar la moneda
 		queue_free()
 	elif body is StaticBody2D:
