@@ -81,10 +81,10 @@ func _physics_process(delta: float) -> void:
 
 # acá el daño pal hitbox/hurtbox creo (toi siguiendo textual del profe)
 func take_damage():
-	print("We hit something")
+	pass
 
 func _on_coyote_timeout():
-	print("Coyote timeout")
+	pass
 	
 	
 func _setup_camera_limits(limit_right: int, limit_bottom: int) -> void:

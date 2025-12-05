@@ -24,8 +24,27 @@ func _on_continue_pressed():
 
 func _on_retry_pressed():
 	_on_continue_pressed()
-	get_tree().reload_current_scene()
+	
+	# Resetear estado del juego
 	Game.lives = 4
+	
+	# Limpiar las monedas colectadas del nivel actual
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var level_name = current_scene.name
+		# Crear una lista de claves a eliminar
+		var keys_to_remove = []
+		for coin_id in Game.collected_coins.keys():
+			if coin_id.begins_with(level_name + "/"):
+				keys_to_remove.append(coin_id)
+		# Eliminar las monedas del nivel actual
+		for key in keys_to_remove:
+			Game.collected_coins.erase(key)
+		
+		# Resetear el contador de monedas basado en cuántas se quitaron
+		Game.coins -= keys_to_remove.size()
+	
+	get_tree().reload_current_scene()
 	
 func _on_main_menu_pressed():
 	_on_continue_pressed()

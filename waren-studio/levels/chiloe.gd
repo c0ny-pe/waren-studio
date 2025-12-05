@@ -137,9 +137,7 @@ func _get_character_bottom_offset(character: AbstractCharacter) -> float:
 
 func _on_body_entered(body: Node2D):
 	if body is AbstractCharacter:
-		print("%s entered" % body.name)
 		Game.lives -= 1
-		print("current lives: %d" % Game.lives)
 		died.emit()
 
 		if Game.lives == 0:

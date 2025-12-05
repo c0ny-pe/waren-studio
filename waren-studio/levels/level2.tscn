@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=23 format=3 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://levels/chiloe.gd" id="1_55gdq"]
 [ext_resource type="Texture2D" uid="uid://cct8oulenvvhv" path="res://assets/Nivel-Chiloe-Boceto.png" id="2_6mfmt"]
@@ -31,6 +31,9 @@ size = Vector2(151.5, 62.171875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crte6"]
 size = Vector2(1407, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qegch"]
+size = Vector2(151.5, 65)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_55gdq")
@@ -271,7 +274,7 @@ stream = ExtResource("12_coinsound")
 polygon = PackedVector2Array(724, 494, 1282, 494, 1288, 600, 1370, 671, 1502, 753, 1571, 856, 2, 858, 1, 721, 601, 639, 708, 577)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Agua"]
-polygon = PackedVector2Array(3671, 854, 4432, 514, 4779, 525, 5070, 447, 5792, 451, 5792, 451, 5793, 484, 5741, 485, 5741, 511, 7152, 515, 7218, 456, 8155, 462, 8325.931, 564.6752, 8573, 648, 9177, 852)
+polygon = PackedVector2Array(3671, 854, 4432, 514, 4779, 525, 5038, 465, 5741, 511, 7152, 515, 7218, 456, 8155, 462, 8325.931, 564.6752, 8573, 648, 9177, 852)
 
 [node name="change_shapes" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_6mfmt")
@@ -287,3 +290,18 @@ one_shot = true
 
 [node name="fox" parent="." groups=["Player"] instance=ExtResource("15_qegch")]
 position = Vector2(2833, 434)
+
+[node name="SobreBotes" type="StaticBody2D" parent="."]
+position = Vector2(5774, 453)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SobreBotes"]
+position = Vector2(-1335.75, 101)
+shape = SubResource("RectangleShape2D_qegch")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SobreBotes"]
+position = Vector2(-1062, 140)
+shape = SubResource("RectangleShape2D_qegch")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SobreBotes"]
+position = Vector2(-2124, 280)
+shape = SubResource("RectangleShape2D_qegch")

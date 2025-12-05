@@ -67,8 +67,12 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_shape"):
 		change_shapes.play()
 		if frog.visible:
-			# transferir posición y velocidad
-			human.global_position = frog.global_position
+			# Calcular el offset de altura (distancia del centro al suelo)
+			var frog_bottom = _get_character_bottom_offset(frog)
+			var human_bottom = _get_character_bottom_offset(human)
+			
+			# Transferir posición ajustando por diferencia de altura
+			human.global_position = frog.global_position + Vector2(0, frog_bottom - human_bottom)
 			human.velocity = frog.velocity
 			
 
@@ -85,8 +89,12 @@ func _physics_process(_delta: float) -> void:
 			human.get_node("CollisionShape2D").disabled = false
 		elif human.visible:
 			croac.play()
-			# transferir posición y velocidad
-			frog.global_position = human.global_position
+			# Calcular el offset de altura (distancia del centro al suelo)
+			var frog_bottom = _get_character_bottom_offset(frog)
+			var human_bottom = _get_character_bottom_offset(human)
+			
+			# Transferir posición ajustando por diferencia de altura
+			frog.global_position = human.global_position + Vector2(0, human_bottom - frog_bottom)
 			frog.velocity = human.velocity
 
 			# transferir estado de agua
@@ -109,9 +117,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_body_entered(body: Node2D):
 	if body is AbstractCharacter:
-		print("%s entered" % body.name)
 		Game.lives -= 1
-		print("current lives: %d" % Game.lives)
 		died.emit()
 
 		if Game.lives == 0:
@@ -150,6 +156,28 @@ func aplicar_efecto_agua(body: AbstractCharacter, en_agua: bool):
 	else:
 		var tween = create_tween()
 		tween.tween_property(body, "modulate", color_normal, 0.3)
+
+func _get_character_bottom_offset(character: AbstractCharacter) -> float:
+	"""
+	Calcula la distancia del centro del personaje al punto más bajo de su colisión.
+	Esto permite alinear los pies al cambiar de forma.
+	"""
+	if character.has_node("CollisionShape2D"):
+		var collision = character.get_node("CollisionShape2D") as CollisionShape2D
+		var shape = collision.shape
+		
+		if shape is CapsuleShape2D:
+			# Para una cápsula, la mitad de la altura más la posición Y del collision shape
+			var capsule = shape as CapsuleShape2D
+			var height = capsule.height * character.scale.y
+			return collision.position.y + (height / 2.0)
+		elif shape is RectangleShape2D:
+			# Para un rectángulo
+			var rect = shape as RectangleShape2D
+			var height = rect.size.y * character.scale.y
+			return collision.position.y + (height / 2.0)
+	
+	return 0.0
 
 func _on_coyote_timeout():
 		pass
