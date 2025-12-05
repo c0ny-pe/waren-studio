@@ -12,6 +12,8 @@ extends Node2D
 @onready var salto_frog: AudioStreamPlayer = $jump_frog
 @onready var salto_human: AudioStreamPlayer = $jump_human
 @onready var walk_leaves: AudioStreamPlayer = $walk_leaves
+@onready var change_shapes: AudioStreamPlayer = $change_shapes
+@onready var croac: AudioStreamPlayer = $croac
 
 signal died
 
@@ -57,6 +59,7 @@ func _physics_process(_delta: float) -> void:
 			salto_human.play()
 	
 	if Input.is_action_just_pressed("change_shape"):
+		change_shapes.play()
 		if frog.visible:
 			# Calcular el offset de altura (distancia del centro al suelo)
 			var frog_bottom = _get_character_bottom_offset(frog)
@@ -78,6 +81,7 @@ func _physics_process(_delta: float) -> void:
 			frog.get_node("CollisionShape2D").disabled = true
 			human.get_node("CollisionShape2D").disabled = false
 		elif human.visible:
+			croac.play()
 			# Calcular el offset de altura (distancia del centro al suelo)
 			var frog_bottom = _get_character_bottom_offset(frog)
 			var human_bottom = _get_character_bottom_offset(human)

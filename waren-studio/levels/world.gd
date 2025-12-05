@@ -18,6 +18,9 @@ extends Node2D
 
 @onready var salto_frog: AudioStreamPlayer = $jump_frog
 @onready var salto_human: AudioStreamPlayer = $jump_human
+@onready var change_shapes: AudioStreamPlayer = $change_shapes
+@onready var croac: AudioStreamPlayer = $croac
+
 
 signal died
 
@@ -62,10 +65,12 @@ func _physics_process(_delta: float) -> void:
 			
 	
 	if Input.is_action_just_pressed("change_shape"):
+		change_shapes.play()
 		if frog.visible:
 			# transferir posición y velocidad
 			human.global_position = frog.global_position
 			human.velocity = frog.velocity
+			
 
 			# transferir estado de agua
 			if frog.swimming:
@@ -79,6 +84,7 @@ func _physics_process(_delta: float) -> void:
 			frog.get_node("CollisionShape2D").disabled = true
 			human.get_node("CollisionShape2D").disabled = false
 		elif human.visible:
+			croac.play()
 			# transferir posición y velocidad
 			frog.global_position = human.global_position
 			frog.velocity = human.velocity

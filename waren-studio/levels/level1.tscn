@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=20 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://levels/world.gd" id="1_yydhl"]
 [ext_resource type="Texture2D" uid="uid://b56bqv84uu7ja" path="res://assets/World/sea.png" id="2_bekh1"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dnvxrd1wwjjdu" path="res://scenes/goal.tscn" id="12_bekh1"]
 [ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="13_8bcou"]
 [ext_resource type="AudioStream" uid="uid://okqecf7pnxw1" path="res://sounds/coin-pickup-mario-style-377272 (mp3cut.net).mp3" id="13_f7u7y"]
+[ext_resource type="AudioStream" uid="uid://g7qdkvch2aw5" path="res://sounds/swoosh-014-383768.mp3" id="15_a5s8o"]
+[ext_resource type="AudioStream" uid="uid://cuwvbny44vc8u" path="res://sounds/frog-croaking-sound-effect-322956 (mp3cut.net).mp3" id="16_ls4ot"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gbfbk"]
 
@@ -316,3 +318,12 @@ pitch_scale = 0.81
 stream = ExtResource("13_8bcou")
 volume_db = -7.5
 pitch_scale = 2.0
+
+[node name="change_shapes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_a5s8o")
+volume_db = -8.0
+pitch_scale = 1.75
+
+[node name="croac" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ls4ot")
+pitch_scale = 1.1

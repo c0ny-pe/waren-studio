@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cuwvbny44vc8u"
+path="res://.godot/imported/frog-croaking-sound-effect-322956 (mp3cut.net).mp3-100d694af102970bfe88d6d24f62d3bf.mp3str"
+
+[deps]
+
+source_file="res://sounds/frog-croaking-sound-effect-322956 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/frog-croaking-sound-effect-322956 (mp3cut.net).mp3-100d694af102970bfe88d6d24f62d3bf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

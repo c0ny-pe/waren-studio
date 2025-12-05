@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/080205_life-lost-game-over-89697.mp3-d4c580ae
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
