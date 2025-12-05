@@ -303,5 +303,17 @@ position = Vector2(-1062, 140)
 shape = SubResource("RectangleShape2D_qegch")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-2124, 280)
+position = Vector2(-859, 232)
+shape = SubResource("RectangleShape2D_qegch")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="SobreBotes"]
+position = Vector2(-769, 74)
+shape = SubResource("RectangleShape2D_qegch")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="SobreBotes"]
+position = Vector2(-495, 114)
+shape = SubResource("RectangleShape2D_qegch")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="SobreBotes"]
+position = Vector2(-239, 65)
 shape = SubResource("RectangleShape2D_qegch")
