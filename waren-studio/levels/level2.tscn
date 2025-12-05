@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=22 format=3 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://levels/chiloe.gd" id="1_55gdq"]
 [ext_resource type="Texture2D" uid="uid://cct8oulenvvhv" path="res://assets/Nivel-Chiloe-Boceto.png" id="2_6mfmt"]
@@ -31,9 +31,6 @@ size = Vector2(151.5, 62.171875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crte6"]
 size = Vector2(1407, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qegch"]
-size = Vector2(151.5, 65)
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_55gdq")
@@ -102,7 +99,7 @@ shape = SubResource("WorldBoundaryShape2D_o0u4e")
 position = Vector2(5549, 1150)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo"]
-position = Vector2(-758, -238)
+position = Vector2(-748, -213)
 shape = SubResource("RectangleShape2D_urxlf")
 
 [node name="jump_human" type="AudioStreamPlayer" parent="."]
@@ -269,6 +266,7 @@ scale = Vector2(3, 3)
 stream = ExtResource("12_coinsound")
 
 [node name="Agua" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Agua"]
 polygon = PackedVector2Array(724, 494, 1282, 494, 1288, 600, 1370, 671, 1502, 753, 1571, 856, 2, 858, 1, 721, 601, 639, 708, 577)
@@ -290,30 +288,3 @@ one_shot = true
 
 [node name="fox" parent="." groups=["Player"] instance=ExtResource("15_qegch")]
 position = Vector2(2833, 434)
-
-[node name="SobreBotes" type="StaticBody2D" parent="."]
-position = Vector2(5774, 453)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-1335.75, 101)
-shape = SubResource("RectangleShape2D_qegch")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-1062, 140)
-shape = SubResource("RectangleShape2D_qegch")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-859, 232)
-shape = SubResource("RectangleShape2D_qegch")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-769, 74)
-shape = SubResource("RectangleShape2D_qegch")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-495, 114)
-shape = SubResource("RectangleShape2D_qegch")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="SobreBotes"]
-position = Vector2(-239, 65)
-shape = SubResource("RectangleShape2D_qegch")
