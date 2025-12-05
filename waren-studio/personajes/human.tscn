@@ -737,7 +737,7 @@ nodes/attack/node = SubResource("AnimationNodeOneShot_ry7vp")
 nodes/attack/position = Vector2(540, 120)
 node_connections = [&"output", 0, &"attack", &"attack", 0, &"movement", &"attack", 1, &"Animation"]
 
-[node name="Human" type="CharacterBody2D"]
+[node name="Human" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_jufo1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
