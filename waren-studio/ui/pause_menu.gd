@@ -29,5 +29,8 @@ func _on_retry_pressed():
 	
 func _on_main_menu_pressed():
 	_on_continue_pressed()
-	get_tree().change_scene_to_file("res://ui/main_menu.tscn")
+	# Resetear estado del juego
 	Game.lives = 4
+	Game.coins = 0
+	Game.collected_coins.clear()
+	LevelManager.go_to_main_menu()

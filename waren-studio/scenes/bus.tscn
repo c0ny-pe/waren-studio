@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://i5knucoafx71"]
+
+[ext_resource type="Script" uid="uid://ik4ua8megwgd" path="res://scenes/goal.gd" id="1_stnsb"]
+[ext_resource type="Texture2D" uid="uid://00kwuisjbgsl" path="res://assets/chiloe/Public Bus-export.png" id="1_t7ha2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stnsb"]
+size = Vector2(131.33333, 151)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_stnsb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_t7ha2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(96.333336, -1.5)
+shape = SubResource("RectangleShape2D_stnsb")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 17.0
+text = "Need coins"

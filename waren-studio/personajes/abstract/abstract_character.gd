@@ -14,10 +14,16 @@ extends CharacterBody2D
 @onready var camera: Camera2D
 @onready var coyote_timer: Timer
 
-
-
 var swimming = false
 var was_on_floor = false
+var in_water = false
+var sprite: Sprite2D  # Referencia al sprite para aplicar el filtro
+
+func _ready() -> void:
+	# Buscar el sprite en el pivot
+	if pivot:
+		sprite = pivot.get_node_or_null("Sprite2D")
+
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -27,7 +33,9 @@ func _physics_process(delta: float) -> void:
 		was_on_floor = false
 		if not coyote_timer.is_stopped():
 			coyote_timer.stop()
-
+	
+	# Actualizar filtro de agua basado en si está en el piso (bote) o no
+	_update_water_filter()
 	
 	if visible:
 		camera.enabled = true
@@ -93,3 +101,19 @@ func scale_physics_values(scale_factor: float) -> void:
 	gravity = int(gravity * scale_factor)
 	acceleration = int(acceleration * scale_factor)
 	friction = int(friction * scale_factor)
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.name == "Agua":
+		in_water = true
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.name == "Agua":
+		in_water = false
+
+func _update_water_filter() -> void:
+	# Solo aplicar filtro si está en agua Y NO está sobre el piso (bote/plataforma)
+	if sprite:
+		if in_water and not is_on_floor():
+			sprite.modulate = Color(0.6, 0.8, 1.0, 0.8)
+		else:
+			sprite.modulate = Color.WHITE

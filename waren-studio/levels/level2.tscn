@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=19 format=3 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://levels/chiloe.gd" id="1_55gdq"]
 [ext_resource type="Texture2D" uid="uid://2luyxyy8gycp" path="res://assets/chiloe/Nivel-Chiloe-Boceto-v2.png" id="2_55gdq"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://b417fchsa5nmh" path="res://ui/game_over_menu.tscn" id="8_jai45"]
 [ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="9_55gdq"]
 [ext_resource type="PackedScene" uid="uid://d03fjq33eeedx" path="res://ui/hud.tscn" id="9_jj0ry"]
-[ext_resource type="PackedScene" uid="uid://dnvxrd1wwjjdu" path="res://scenes/goal.tscn" id="10_crte6"]
 [ext_resource type="Texture2D" uid="uid://bvspepfo6ec8q" path="res://assets/boat/boat.png" id="10_hq01p"]
+[ext_resource type="PackedScene" uid="uid://buqkpbdb7y8mf" path="res://scenes/coin.tscn" id="11_coin"]
+[ext_resource type="AudioStream" uid="uid://okqecf7pnxw1" path="res://sounds/coin-pickup-mario-style-377272 (mp3cut.net).mp3" id="12_coinsound"]
+[ext_resource type="PackedScene" uid="uid://i5knucoafx71" path="res://scenes/bus.tscn" id="12_fjysh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anofi"]
-size = Vector2(3199.5, 104)
+size = Vector2(1891, 83)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_urxlf"]
 
@@ -34,9 +36,12 @@ script = ExtResource("1_55gdq")
 position = Vector2(4800, 450)
 texture = ExtResource("2_55gdq")
 
+[node name="Area2D" parent="." instance=ExtResource("12_fjysh")]
+position = Vector2(9258, 410.00003)
+
 [node name="Frog" parent="." instance=ExtResource("4_fjysh")]
-position = Vector2(66, 408)
-scale = Vector2(1, 1)
+position = Vector2(65, 446)
+scale = Vector2(2, 2)
 
 [node name="Human" parent="." instance=ExtResource("5_bcewn")]
 position = Vector2(-253, 424)
@@ -46,20 +51,28 @@ scale = Vector2(2, 2)
 position = Vector2(18, 452)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1565.25, 54)
+position = Vector2(2222.5, 64.5)
 shape = SubResource("RectangleShape2D_anofi")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(3155, 13)
-polygon = PackedVector2Array(1012, 148, 480, 20, 8, -10, 39, 276)
+position = Vector2(3159, 33)
+polygon = PackedVector2Array(1044, 111, 481, 29, 8, -10, 17, 369, 462, 369, 862, 214)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-17, 23, 702, 23, 579, 179, -16, 244)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1280, 111, 1600, 411, 1751, 317)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(2222.5, 64.5)
+polygon = PackedVector2Array(6110.5, 37.5, 6880.5, 1.5, 7355.5, 8.5, 7355.5, 332.5, 6954.5, 333.5)
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_qegch")]
 visible = false
 
 [node name="GameOverMenu" parent="." instance=ExtResource("8_jai45")]
 visible = false
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="HUD" parent="." instance=ExtResource("9_jj0ry")]
 
@@ -83,10 +96,6 @@ position = Vector2(5549, 1150)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fondo"]
 position = Vector2(-758, -238)
 shape = SubResource("RectangleShape2D_urxlf")
-
-[node name="Goal" parent="." instance=ExtResource("10_crte6")]
-position = Vector2(9406, 438)
-scale = Vector2(5, 5)
 
 [node name="jump_human" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_55gdq")
@@ -207,3 +216,55 @@ color = Color(0.4, 0.23529412, 0.13333334, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="piso_casas"]
 position = Vector2(669.5, 48)
 shape = SubResource("RectangleShape2D_crte6")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(727, 604)
+
+[node name="Coin" parent="Node2D" instance=ExtResource("11_coin")]
+position = Vector2(1274, -355)
+scale = Vector2(3, 3)
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin"]
+stream = ExtResource("12_coinsound")
+volume_db = -8.667
+
+[node name="Coin2" parent="Node2D" instance=ExtResource("11_coin")]
+position = Vector2(-259, 73)
+scale = Vector2(3, 3)
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin2"]
+stream = ExtResource("12_coinsound")
+volume_db = -8.667
+
+[node name="Coin3" parent="Node2D" instance=ExtResource("11_coin")]
+position = Vector2(4183, 79)
+scale = Vector2(3, 3)
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin3"]
+stream = ExtResource("12_coinsound")
+volume_db = -8.667
+
+[node name="Coin4" parent="Node2D" instance=ExtResource("11_coin")]
+position = Vector2(5673, -269)
+scale = Vector2(3, 3)
+input_pickable = false
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin4"]
+stream = ExtResource("12_coinsound")
+volume_db = -8.667
+
+[node name="Coin5" parent="Node2D" instance=ExtResource("11_coin")]
+position = Vector2(5126, 20)
+scale = Vector2(3, 3)
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin5"]
+stream = ExtResource("12_coinsound")
+
+[node name="Agua" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Agua"]
+polygon = PackedVector2Array(733, 475, 1276, 478, 1285, 612, 1564, 857, 2, 858, 1, 721, 703, 631)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Agua"]
+polygon = PackedVector2Array(3671, 854, 4432, 514, 4779, 525, 5070, 447, 5792, 451, 5792, 451, 5793, 484, 5741, 485, 5741, 511, 7152, 515, 7218, 456, 8155, 462, 8452, 642, 9177, 852)

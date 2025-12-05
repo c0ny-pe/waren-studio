@@ -3,6 +3,8 @@ extends Area2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var coin_sound: AudioStreamPlayer = $coin_sound
 
+var in_water = false
+var on_boat = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -43,18 +45,30 @@ func _on_body_entered(body: Node2D) -> void:
 		set_deferred("monitoring", false)
 		# Eliminar la moneda
 		queue_free()
+	elif body is StaticBody2D:
+		# Detectar si está sobre un bote
+		on_boat = true
+		_update_water_filter()
 
 func _on_body_exited(body: Node2D) -> void:
-	pass
+	if body is StaticBody2D:
+		on_boat = false
+		_update_water_filter()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Agua":
-		# Aplicar filtro azul cuando entra al agua
-		if sprite:
-			sprite.modulate = Color(0.6, 0.8, 1.0, 0.8)
+		in_water = true
+		_update_water_filter()
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.name == "Agua":
-		# Quitar filtro cuando sale del agua
-		if sprite:
+		in_water = false
+		_update_water_filter()
+
+func _update_water_filter() -> void:
+	# Solo aplicar filtro si está en agua Y NO está sobre un bote
+	if sprite:
+		if in_water and not on_boat:
+			sprite.modulate = Color(0.6, 0.8, 1.0, 0.8)
+		else:
 			sprite.modulate = Color.WHITE
