@@ -4,15 +4,15 @@ extends CharacterBody2D
 @export var velocidad = 200
 @export var distancia_ataque = 25
 @export var vida_maxima = 3
-@onready var hitbox_ataque = $Hitbox
 
+var hitbox_ataque: Area2D
 var vida_actual = 3
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jugador_en_rango_ataque: bool = false
 
 # Referencias
 @onready var animation_player = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var sprite = $Pivot/Sprite2D
 @onready var pivot = $Pivot
 
 # --- ESTADOS ---
@@ -23,6 +23,7 @@ var objetivo = null
 
 func _ready():
 	vida_actual = vida_maxima
+	hitbox_ataque = get_node_or_null("Pivot/Hitbox")
 	cambiar_estado(IDLE)
 
 func _physics_process(delta):
@@ -82,6 +83,10 @@ func recibir_dano(cantidad):
 	else:
 		cambiar_estado(HERIDO)
 
+# Método para compatibilidad con el sistema Hitbox/Hurtbox
+func take_damage(damage_amount: int = 1):
+	recibir_dano(damage_amount)
+
 # --- GESTOR DE ESTADOS Y ANIMACIONES ---
 
 func cambiar_estado(nuevo_estado):
@@ -101,8 +106,10 @@ func cambiar_estado(nuevo_estado):
 			velocity.x = 0
 			animation_player.play("death_fox")
 			# Desactiva las colisiones para que el cuerpo no estorbe
-			$CollisionShape2D.set_deferred("disabled", true) 
-			# Si tienes Hitbox/Hurtbox, desactívalos también aquí si quieres
+			$CollisionShape2D.set_deferred("disabled", true)
+			# Desactivar hurtbox para que no reciba más golpes
+			if $Pivot/Hurtbox/CollisionShape2D:
+				$Pivot/Hurtbox/CollisionShape2D.set_deferred("disabled", true)
 
 # --- SEÑALES ---
 
