@@ -3,7 +3,7 @@ extends Node2D
 @onready var frog: AbstractCharacter = $Frog
 @onready var human: AbstractCharacter = $Human
 @onready var fondo: Area2D = $Fondo
-#@onready var agua: Area2D = $Agua
+@onready var agua: Area2D = $Agua
 
 #@onready var coyote_timer: Timer = $CoyoteTimer
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
@@ -11,9 +11,13 @@ extends Node2D
 
 @onready var salto_frog: AudioStreamPlayer = $jump_frog
 @onready var salto_human: AudioStreamPlayer = $jump_human
+<<<<<<< HEAD
 @onready var walk_leaves: AudioStreamPlayer = $walk_leaves
 @onready var change_shapes: AudioStreamPlayer = $change_shapes
 @onready var croac: AudioStreamPlayer = $croac
+=======
+#@onready var walk_leaves: AudioStreamPlayer = $walk_leaves
+>>>>>>> 8815e9f94cf027dd283e88e611909d765556fd43
 
 signal died
 
@@ -37,8 +41,8 @@ func _ready() -> void:
 		frog.scale_physics_values(frog.scale.x)
 	
 	fondo.body_entered.connect(_on_body_entered)
-	#agua.body_entered.connect(_on_body_entered_water)
-	#agua.body_exited.connect(_on_body_exited_water)
+	agua.body_entered.connect(_on_body_entered_water)
+	agua.body_exited.connect(_on_body_exited_water)
 	#coyote_timer.timeout.connect(_on_coyote_timeout)
 
 func _adjust_camera_zoom(character: AbstractCharacter) -> void:
@@ -50,7 +54,10 @@ func _adjust_camera_zoom(character: AbstractCharacter) -> void:
 		camera.zoom = Vector2(adjusted_zoom, adjusted_zoom)
 
 func _physics_process(_delta: float) -> void:
-	
+	# Actualizar efecto de agua para el personaje visible
+	var current_character = frog if frog.visible else human
+	if current_character.in_water:
+		_update_character_water_effect(current_character)
 	
 	if Input.is_action_just_pressed("jump"):
 		if frog.visible:
@@ -70,12 +77,12 @@ func _physics_process(_delta: float) -> void:
 			human.velocity = frog.velocity
 
 			# transferir estado de agua
-			#if frog.swimming:
-				#human.swimming = true
-				#human.modulate = color_agua
-			#else:
-				#human.swimming = false
-				#human.modulate = frog.modulate
+			if frog.swimming:
+				human.swimming = true
+				human.modulate = color_agua
+			else:
+				human.swimming = false
+				human.modulate = frog.modulate
 
 			# deshabilitar colisiones
 			frog.get_node("CollisionShape2D").disabled = true
@@ -91,12 +98,12 @@ func _physics_process(_delta: float) -> void:
 			frog.velocity = human.velocity
 
 			# transferir estado de agua
-			#if human.swimming:
-				#frog.swimming = true
-				#frog.modulate = color_agua
-			#else:
-				#frog.swimming = false
-				#frog.modulate = human.modulate
+			if human.swimming:
+				frog.swimming = true
+				frog.modulate = color_agua
+			else:
+				frog.swimming = false
+				frog.modulate = human.modulate
 
 			# deshabilitar colisiones
 			human.get_node("CollisionShape2D").disabled = true
@@ -138,39 +145,48 @@ func _on_body_entered(body: Node2D):
 		if Game.lives == 0:
 			game_over_menu.visible = true
 
-#func _on_body_entered_water(body: Node2D) -> void:
-	#if not body is AbstractCharacter:
-		#return
-#
-	## marcar que está en agua (para ambos personajes)
-	#body.swimming = true
-#
-	## aplicar efecto visual de agua
-	#aplicar_efecto_agua(body, true)
+func _on_body_entered_water(body: Node2D) -> void:
+	if not body is AbstractCharacter:
+		return
 
-#func _on_body_exited_water(body: Node2D):
-	#if not body is AbstractCharacter:
-		#return
-#
-	## marcar que ya no está en agua
-	#body.swimming = false
-#
-	## quitar efecto visual de agua
-	#aplicar_efecto_agua(body, false)
-#
-	## restaurar valores normales solo para la rana
-	#if body.name == "Frog":
-		#body.jump_speed = 300
-		#body.gravity = 800
-		#body.acceleration = 250
+	# marcar que está en agua (para ambos personajes)
+	body.swimming = true
+	body.in_water = true
 
-#func aplicar_efecto_agua(body: AbstractCharacter, en_agua: bool):
-	#if en_agua:
-		#var tween = create_tween()
-		#tween.tween_property(body, "modulate", color_agua, 0.3)
-	#else:
-		#var tween = create_tween()
-		#tween.tween_property(body, "modulate", color_normal, 0.3)
+	# aplicar efecto visual de agua solo si no está en el piso (bote)
+	_update_character_water_effect(body)
+
+func _on_body_exited_water(body: Node2D):
+	if not body is AbstractCharacter:
+		return
+
+	# marcar que ya no está en agua
+	body.swimming = false
+	body.in_water = false
+
+	# quitar efecto visual de agua
+	aplicar_efecto_agua(body, false)
+
+	# restaurar valores normales solo para la rana
+	if body.name == "Frog":
+		body.jump_speed = 300
+		body.gravity = 800
+		body.acceleration = 250
+
+func _update_character_water_effect(character: AbstractCharacter):
+	# Solo aplicar filtro si está en agua Y NO está sobre el piso (bote/plataforma)
+	if character.in_water and not character.is_on_floor():
+		aplicar_efecto_agua(character, true)
+	else:
+		aplicar_efecto_agua(character, false)
+
+func aplicar_efecto_agua(body: AbstractCharacter, en_agua: bool):
+	if en_agua:
+		var tween = create_tween()
+		tween.tween_property(body, "modulate", color_agua, 0.3)
+	else:
+		var tween = create_tween()
+		tween.tween_property(body, "modulate", color_normal, 0.3)
 
 func _on_coyote_timeout():
 		pass

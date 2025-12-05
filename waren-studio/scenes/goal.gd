@@ -14,7 +14,11 @@ func update_label() -> void:
 	if label and coins_required > 0:
 		var coins_left = coins_required - Game.coins
 		if coins_left > 0:
-			label.text = "Need %d coins" % coins_left
+			if coins_left == 1:
+				label.text = "Need %d coin" % coins_left
+			else: 
+				label.text = "Need %d coins" % coins_left
+
 			label.modulate = Color.RED
 		else:
 			label.text = "Enter!"
@@ -35,5 +39,6 @@ func _on_body_entered(body: Node2D):
 		if coins_required > 0:
 			Game.coins -= coins_required
 		
-		LevelManager.go_to_next_level()
+		# Usar call_deferred para evitar errores durante physics callback
+		LevelManager.call_deferred("go_to_next_level")
 	
