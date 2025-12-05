@@ -5,19 +5,16 @@ extends Node2D
 @onready var fondo: Area2D = $Fondo
 @onready var agua: Area2D = $Agua
 
-#@onready var coyote_timer: Timer = $CoyoteTimer
+@onready var coyote_timer: Timer = $CoyoteTimer
 @onready var game_over_menu: CanvasLayer = $GameOverMenu
 @onready var hud: CanvasLayer = $HUD
 
 @onready var salto_frog: AudioStreamPlayer = $jump_frog
 @onready var salto_human: AudioStreamPlayer = $jump_human
-<<<<<<< HEAD
-@onready var walk_leaves: AudioStreamPlayer = $walk_leaves
+
+#@onready var walk_leaves: AudioStreamPlayer = $walk_leaves
 @onready var change_shapes: AudioStreamPlayer = $change_shapes
 @onready var croac: AudioStreamPlayer = $croac
-=======
-#@onready var walk_leaves: AudioStreamPlayer = $walk_leaves
->>>>>>> 8815e9f94cf027dd283e88e611909d765556fd43
 
 signal died
 
@@ -34,16 +31,19 @@ func _ready() -> void:
 	_adjust_camera_zoom(human)
 	_adjust_camera_zoom(frog)
 	
-	# Ajustar valores físicos según escala
+	# Ajustar valores físicos según escala - usar call_deferred para asegurar que se ejecuta después del _ready de los personajes
 	if human.scale.x != 1.0:
-		human.scale_physics_values(human.scale.x)
+		call_deferred("_scale_character_physics", human, human.scale.x)
 	if frog.scale.x != 1.0:
-		frog.scale_physics_values(frog.scale.x)
+		call_deferred("_scale_character_physics", frog, frog.scale.x)
 	
 	fondo.body_entered.connect(_on_body_entered)
 	agua.body_entered.connect(_on_body_entered_water)
 	agua.body_exited.connect(_on_body_exited_water)
-	#coyote_timer.timeout.connect(_on_coyote_timeout)
+	coyote_timer.timeout.connect(_on_coyote_timeout)
+
+func _scale_character_physics(character: AbstractCharacter, scale_factor: float) -> void:
+	character.scale_physics_values(scale_factor)
 
 func _adjust_camera_zoom(character: AbstractCharacter) -> void:
 	if character.has_node("Camera2D"):

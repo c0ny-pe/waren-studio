@@ -12,6 +12,10 @@ func _ready() -> void:
 	quit_button.pressed.connect(func(): get_tree().quit()) 
 	
 func _on_start_pressed():
+	# Resetear el estado del juego al iniciar
+	Game.coins = 0
+	Game.lives = 4
+	Game.collected_coins.clear()
 	LevelManager.go_to_next_level()
 
 func _on_credits_pressed():

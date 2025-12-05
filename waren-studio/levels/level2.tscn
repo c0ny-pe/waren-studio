@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=21 format=3 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://levels/chiloe.gd" id="1_55gdq"]
-[ext_resource type="Texture2D" uid="uid://2luyxyy8gycp" path="res://assets/chiloe/Nivel-Chiloe-Boceto-v2.png" id="2_55gdq"]
+[ext_resource type="Texture2D" uid="uid://cct8oulenvvhv" path="res://assets/Nivel-Chiloe-Boceto.png" id="2_6mfmt"]
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="4_fjysh"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="5_bcewn"]
 [ext_resource type="PackedScene" uid="uid://c04pe474ax3sl" path="res://ui/pause_menu.tscn" id="7_qegch"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://buqkpbdb7y8mf" path="res://scenes/coin.tscn" id="11_coin"]
 [ext_resource type="AudioStream" uid="uid://okqecf7pnxw1" path="res://sounds/coin-pickup-mario-style-377272 (mp3cut.net).mp3" id="12_coinsound"]
 [ext_resource type="PackedScene" uid="uid://i5knucoafx71" path="res://scenes/bus.tscn" id="12_fjysh"]
+[ext_resource type="AudioStream" uid="uid://g7qdkvch2aw5" path="res://sounds/swoosh-014-383768.mp3" id="13_6mfmt"]
+[ext_resource type="AudioStream" uid="uid://cuwvbny44vc8u" path="res://sounds/frog-croaking-sound-effect-322956 (mp3cut.net).mp3" id="14_qegch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anofi"]
 size = Vector2(1891, 83)
@@ -34,7 +36,7 @@ script = ExtResource("1_55gdq")
 
 [node name="NivelChiloeBoceto" type="Sprite2D" parent="."]
 position = Vector2(4800, 450)
-texture = ExtResource("2_55gdq")
+texture = ExtResource("2_6mfmt")
 
 [node name="Area2D" parent="." instance=ExtResource("12_fjysh")]
 position = Vector2(9258, 410.00003)
@@ -51,22 +53,24 @@ scale = Vector2(2, 2)
 position = Vector2(18, 452)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2222.5, 64.5)
+position = Vector2(2222, 84)
 shape = SubResource("RectangleShape2D_anofi")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(3159, 33)
-polygon = PackedVector2Array(1044, 111, 481, 29, 8, -10, 17, 369, 462, 369, 862, 214)
+position = Vector2(3159, 52)
+polygon = PackedVector2Array(1062, 94, 481, 29, 8, -10, 17, 369, 464, 367, 789, 216)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-17, 23, 702, 23, 579, 179, -16, 244)
+position = Vector2(0, 19)
+polygon = PackedVector2Array(-17, 23, 702, 23, 679, 105, 582, 165, -17, 241)
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(1280, 111, 1600, 411, 1751, 317)
+position = Vector2(-16, 16)
+polygon = PackedVector2Array(1284, 98, 1348, 188, 1502, 280, 1600, 411, 1751, 317, 1356, 99)
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(2222.5, 64.5)
-polygon = PackedVector2Array(6110.5, 37.5, 6880.5, 1.5, 7355.5, 8.5, 7355.5, 332.5, 6954.5, 333.5)
+polygon = PackedVector2Array(6081.5, 43.5, 6880.5, 1.5, 7355.5, 8.5, 7355.5, 332.5, 6954.5, 333.5)
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_qegch")]
 visible = false
@@ -261,10 +265,21 @@ scale = Vector2(3, 3)
 stream = ExtResource("12_coinsound")
 
 [node name="Agua" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Agua"]
-polygon = PackedVector2Array(733, 475, 1276, 478, 1285, 612, 1564, 857, 2, 858, 1, 721, 703, 631)
+polygon = PackedVector2Array(724, 494, 1282, 494, 1288, 600, 1370, 671, 1502, 753, 1571, 856, 2, 858, 1, 721, 601, 639, 708, 577)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Agua"]
-polygon = PackedVector2Array(3671, 854, 4432, 514, 4779, 525, 5070, 447, 5792, 451, 5792, 451, 5793, 484, 5741, 485, 5741, 511, 7152, 515, 7218, 456, 8155, 462, 8452, 642, 9177, 852)
+polygon = PackedVector2Array(3671, 854, 4432, 514, 4779, 525, 5070, 447, 5792, 451, 5792, 451, 5793, 484, 5741, 485, 5741, 511, 7152, 515, 7218, 456, 8155, 462, 8325.931, 564.6752, 8573, 648, 9177, 852)
+
+[node name="change_shapes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_6mfmt")
+volume_db = -8.0
+pitch_scale = 1.75
+
+[node name="croac" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_qegch")
+pitch_scale = 1.1
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true

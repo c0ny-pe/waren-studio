@@ -26,9 +26,9 @@ func _physics_process(delta: float) -> void:
 	
 	if swimming:
 		jump_speed = 300
-		gravity = 200
-		acceleration = 100
-		velocity.y *= 0.9
+		gravity = 500
+		acceleration = 150
+		velocity.y *= 0.95
 		# no importa si no está en el suelo
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = -jump_speed
