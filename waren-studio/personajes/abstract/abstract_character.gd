@@ -80,8 +80,11 @@ func _physics_process(delta: float) -> void:
 		camera.enabled = false
 
 # acá el daño pal hitbox/hurtbox creo (toi siguiendo textual del profe)
-func take_damage():
-	pass
+func take_damage(damage_amount: int = 1):
+	# Reducir vidas cuando recibe daño
+	Game.lives -= damage_amount
+	if Game.lives <= 0:
+		Game.lives = 0
 
 func _on_coyote_timeout():
 	pass
