@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpdf0veu5fpve"]
+[gd_scene load_steps=23 format=3 uid="uid://cpdf0veu5fpve"]
 
 [ext_resource type="Script" uid="uid://maovahbpo4v7" path="res://levels/chiloe.gd" id="1_55gdq"]
-[ext_resource type="Texture2D" uid="uid://cct8oulenvvhv" path="res://assets/Nivel-Chiloe-Boceto.png" id="2_6mfmt"]
+[ext_resource type="Texture2D" uid="uid://crptexw3jef8e" path="res://assets/chiloe/Nivel-Chiloe-Boceto_2.png" id="2_jai45"]
 [ext_resource type="PackedScene" uid="uid://cf6hd15clueyc" path="res://personajes/frog.tscn" id="4_fjysh"]
 [ext_resource type="PackedScene" uid="uid://d3ild7ulkssuu" path="res://personajes/human.tscn" id="5_bcewn"]
 [ext_resource type="PackedScene" uid="uid://c04pe474ax3sl" path="res://ui/pause_menu.tscn" id="7_qegch"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://g7qdkvch2aw5" path="res://sounds/swoosh-014-383768.mp3" id="13_6mfmt"]
 [ext_resource type="AudioStream" uid="uid://cuwvbny44vc8u" path="res://sounds/frog-croaking-sound-effect-322956 (mp3cut.net).mp3" id="14_qegch"]
 [ext_resource type="PackedScene" uid="uid://coqct72wbotcu" path="res://personajes/fox.tscn" id="15_qegch"]
+[ext_resource type="Texture2D" uid="uid://cgwfh8ibbwmh" path="res://assets/chiloe/Nivel-Chiloe-Boceto11.png" id="16_jai45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anofi"]
 size = Vector2(1891, 83)
@@ -37,7 +38,7 @@ script = ExtResource("1_55gdq")
 
 [node name="NivelChiloeBoceto" type="Sprite2D" parent="."]
 position = Vector2(4800, 450)
-texture = ExtResource("2_6mfmt")
+texture = ExtResource("2_jai45")
 
 [node name="Area2D" parent="." instance=ExtResource("12_fjysh")]
 position = Vector2(9258, 410.00003)
@@ -288,3 +289,16 @@ one_shot = true
 
 [node name="fox" parent="." groups=["Player"] instance=ExtResource("15_qegch")]
 position = Vector2(2833, 434)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(176, 944)
+texture = ExtResource("16_jai45")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(663, 945)
+texture = ExtResource("16_jai45")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1141.9999, 945)
+rotation = -0.05235988
+texture = ExtResource("16_jai45")

@@ -68,6 +68,9 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("change_shape"):
 		change_shapes.play()
 		if frog.visible:
+			
+			
+			
 			# Calcular el offset de altura (distancia del centro al suelo)
 			var frog_bottom = _get_character_bottom_offset(frog)
 			var human_bottom = _get_character_bottom_offset(human)
