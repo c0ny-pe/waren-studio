@@ -1,6 +1,8 @@
 extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var coin_sound: AudioStreamPlayer = $coin_sound
+
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -32,9 +34,11 @@ func _get_coin_id() -> String:
 func _on_body_entered(body: Node2D) -> void:
 	if body is AbstractCharacter:
 		var coin_id = _get_coin_id()
+		
 		# Marcar como recolectada
 		Game.collected_coins[coin_id] = true
 		Game.coins += 1
+		coin_sound.play()
 		# Desactivar colisión para evitar múltiples detecciones
 		set_deferred("monitoring", false)
 		# Eliminar la moneda

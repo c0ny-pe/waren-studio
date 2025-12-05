@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bq2ogc78gis0f"]
+[gd_scene load_steps=18 format=4 uid="uid://bq2ogc78gis0f"]
 
 [ext_resource type="Script" uid="uid://bs3pm3hio5yp5" path="res://levels/world.gd" id="1_yydhl"]
 [ext_resource type="Texture2D" uid="uid://b56bqv84uu7ja" path="res://assets/World/sea.png" id="2_bekh1"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://buqkpbdb7y8mf" path="res://scenes/coin.tscn" id="11_coin"]
 [ext_resource type="PackedScene" uid="uid://dnvxrd1wwjjdu" path="res://scenes/goal.tscn" id="12_bekh1"]
 [ext_resource type="AudioStream" uid="uid://ciowncwyfkd45" path="res://sounds/toy-button-105724.mp3" id="13_8bcou"]
+[ext_resource type="AudioStream" uid="uid://okqecf7pnxw1" path="res://sounds/coin-pickup-mario-style-377272 (mp3cut.net).mp3" id="13_f7u7y"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gbfbk"]
 
@@ -272,18 +273,37 @@ position = Vector2(727, 604)
 [node name="Coin" parent="Node2D" instance=ExtResource("11_coin")]
 position = Vector2(350, -81)
 
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin"]
+stream = ExtResource("13_f7u7y")
+volume_db = -8.667
+
 [node name="Coin2" parent="Node2D" instance=ExtResource("11_coin")]
 position = Vector2(-73, -344)
 
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin2"]
+stream = ExtResource("13_f7u7y")
+volume_db = -8.667
+
 [node name="Coin3" parent="Node2D" instance=ExtResource("11_coin")]
 position = Vector2(342, -307)
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin3"]
+stream = ExtResource("13_f7u7y")
+volume_db = -8.667
 
 [node name="Coin4" parent="Node2D" instance=ExtResource("11_coin")]
 position = Vector2(311, -425)
 input_pickable = false
 
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin4"]
+stream = ExtResource("13_f7u7y")
+volume_db = -8.667
+
 [node name="Coin5" parent="Node2D" instance=ExtResource("11_coin")]
 position = Vector2(-170, -316)
+
+[node name="coin_sound" type="AudioStreamPlayer" parent="Node2D/Coin5"]
+stream = ExtResource("13_f7u7y")
 
 [node name="jump_human" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_8bcou")

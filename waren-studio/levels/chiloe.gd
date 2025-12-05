@@ -42,7 +42,7 @@ func _ready() -> void:
 func _adjust_camera_zoom(character: AbstractCharacter) -> void:
 	if character.has_node("Camera2D"):
 		var camera = character.get_node("Camera2D") as Camera2D
-		var base_zoom = 4.5
+		var base_zoom = 3
 		# Dividir el zoom base por la escala del personaje
 		var adjusted_zoom = base_zoom / character.scale.x
 		camera.zoom = Vector2(adjusted_zoom, adjusted_zoom)
